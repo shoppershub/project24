@@ -52,3 +52,28 @@ body
 	
 	
 }
+.mySlideShow{
+	width:1000px;
+}
+.slide{	
+	display:none;
+}
+.prev{
+	cursor:pointer;
+	margin-top:-100px;
+	position:absolute;
+}
+.next{
+	margin-top:-100px;
+	margin-left:140px;
+	cursor:pointer;
+	position:absolute;
+}
+.note8{
+	width:150px;
+	height:200px;
+}
+.iphone8{
+	width:150px;
+	height:200px;
+}
