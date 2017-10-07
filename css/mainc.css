@@ -5,6 +5,7 @@
 	height:200px;
 	width:100%;
 	margin:0px;
+	
 
 }
 body
@@ -119,7 +120,7 @@ a{text-decoration:none;}
 {
 	
 	display:inline-block;
-	
+	position:relative;
 	
 }	
 .dc
@@ -129,7 +130,7 @@ a{text-decoration:none;}
 	background-color:white;
 	width:120px;
 	height:40px;
-	z-index: 2;
+	z-index: 1;
 	
 	
 }
