@@ -1,0 +1,42 @@
+.mainBlock {
+  position: relative;
+  height: 400px;
+  width: 350px;
+  left: 50%;
+  margin-left: -175px;
+
+  padding-left: 15px;
+  padding-right: 15px;
+  border-style: solid;
+  border-color: grey;
+  border-width: thin;
+  border-radius: 3px;
+}
+
+.divider {
+	display: flex;
+	flex-basis: 100%;
+	align-items: center;
+	color: rgba(0, 0, 0, 0.35);
+
+	margin: 8px 0px;
+}
+.divider::before,
+.divider::after {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+	margin: 0px 8px;
+}
+
+.forgotPass {
+  float: right;
+}
+
+.forgotPass a{
+  text-decoration: none;
+  color: blue;
+}

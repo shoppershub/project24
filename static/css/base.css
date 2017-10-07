@@ -1,0 +1,86 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.header {
+  position: absolute;
+  top: 0%;
+  height: 20%;
+  width: 100%;
+  background-color: orange;
+}
+
+.middle {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  height: 70%;
+}
+
+.footer {
+  position: absolute;
+  top: 90%;
+  height: 10%;
+  width: 100%;
+  background-color: green;
+}
+
+.formLabel {
+  font-weight: bold;
+  font-size: 15px;
+}
+.inputField {
+  width: 100%;
+  height: 27px;
+  border-style: solid;
+  border-color: #C0C0C0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: orange;
+  box-shadow: 0 0 7px orange;
+}
+
+.continueYellowButton {
+  width: 100%;
+  height: 35px;
+  background-color: #ffd633;
+  border-radius: 3px;
+  border-style: solid;
+  border-color: #ffd000;
+  font-size: 17px;
+}
+
+.continueYellowButton:hover {
+  background-color: #ffcc00;
+}
+
+.continueYellowButton:focus {
+  outline: none;
+  border-color: orange;
+  box-shadow: 0 0 7px orange;
+}
+
+.continueGrayButton {
+  width: 100%;
+  height: 35px;
+  background-color: #B0B0B0;
+  border-radius: 3px;
+  border-style: solid;
+  border-color: #C0C0C0;
+  font-size: 20px;
+}
+
+.continueGrayButton:hover {
+  background-color: #B9B9B9;
+}
+
+.continueGrayButton:focus {
+  outline: none;
+  border-color: #808080;
+  box-shadow: 0 0 7px #C0C0C0;
+}
