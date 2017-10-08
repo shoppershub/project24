@@ -36,6 +36,7 @@
 
 <div id="main">
 	<div class="mySlideShow">
+		<div class="divdeals"><img src="./images/deals.jpeg" class="deals"></div>
 		<div class="slide">
 			<img src="./images/note8.jpeg" class="note8">
 		</div>
@@ -48,6 +49,15 @@
 			var slideindex=1;
 			showSlide(slideindex);
 		</script>
+	</div>
+	<div class="timefordeals">
+			<h1 class="timeremaining">Time Remaining: </h1>
+			<p id="time"></p>
+			<script>
+				var countdowndate=new Date("Jan 1, 2018 00:00:00").getTime();
+				var x=setInterval(calctime,1000);
+			</script>
+			<p class="hurry"><u>Hurry!!!!!</u></p>
 	</div>
 </div>
 <div id="footer">
