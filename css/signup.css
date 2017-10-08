@@ -15,7 +15,7 @@ body
 {
 	
 	
-	height:500px;
+	height:550px;
 	width:100%;
 }
 #footer
@@ -42,7 +42,7 @@ body
 	position:absolute;
 	top:15.5%;
 	width:40%;
-	height:400px;
+	height:450px;
 	left:30%;
 	border-style: solid;
   border-color: grey;
@@ -75,14 +75,57 @@ td
 {
 	background-color:green;
 	border:none;
-	width:60px;
+	width:60%;
 	height:30px;
 	color:white;
-	font-size:15px;
+	font-size:18px;
+	margin:20px 0px 0px 75px;
+	border-radius:5px;
 }
 #submit:hover
 {
 	cursor:pointer;
+	background-color:rgb(0,170,0);
 	
 	
 }
+.al
+{
+	display:flex;
+	flex-basis: 100%;
+	align-items:center;
+	color: rgba(0, 0, 0, 0.35);
+	margin-top:15px;
+	height:10px;
+}
+.al::before,.al::after
+{
+	content: "";
+	flex-grow:1;
+	height: 1px;
+	margin: 0px 8px;
+	background: rgba(0, 0, 0, 0.35);
+}
+#log1
+{
+	background-color:green;
+	border:none;
+	width:60%;
+	height:30px;
+	color:white;
+	margin:10px 0px 0px 75px;
+	border-radius:5px;
+	text-align:center;
+	
+	
+}
+#log1:hover
+{
+	cursor:pointer;
+	background-color:rgb(0,170,0);
+	
+	
+}
+a{text-decoration:none;}
+h4
+{padding-top:5px;}
