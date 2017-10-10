@@ -70,31 +70,69 @@ a{text-decoration:none;}
 
 
 .mySlideShow{
-	width:1000px;
+	width:970px;
+	height:300px;
+	float:left;
 }
-.slide{	
+.slide{
+	width:720px;
+	height:300px;
 	display:none;
 }
 .prev{
 	cursor:pointer;
-	margin-top:-100px;
+	margin-top:-160px;
+	margin-left:252px;
 	position:absolute;
 }
 .next{
-	margin-top:-100px;
-	margin-left:140px;
+	margin-top:-160px;
+	margin-left:960px;
 	cursor:pointer;
 	position:absolute;
 	
 }
 .note8{
-	width:150px;
-	height:200px;
+	width:720px;
+	height:300px;
+	margin-left:0px;
+	position:absolute;
 }
 .iphone8{
-	width:150px;
-	height:200px;
-
+	width:720px;
+	height:300px;
+	margin-left:0px;
+	position:absolute;
+}
+.deals{
+	width:250px;
+	height:300px;
+	float:left;
+}
+.divdeals{
+	width:250px;
+	height:300px;
+	float:left;
+}
+.timefordeals{
+	background-color:white;
+	float:right;
+	width:379px;
+	height:300px;
+}
+h1.timeremaining{
+	padding-top:10px;
+	padding-left:80px;
+}
+#time{
+	text-align:center;
+	color:red;
+	font-size:30px;
+}
+.hurry{
+	text-align:center;
+	color:red;
+	font-size:30px;
 }
 .b1
 {
