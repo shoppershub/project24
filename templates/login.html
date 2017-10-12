@@ -34,7 +34,7 @@ Header HERE
       <div class="divider">
         <h5>New to site?</h5>
       </div>
-      <button id="createNewAcc" class="continueGrayButton" type="button" name="createNewAcc">Create new account</button>
+      <button onclick="window.location.href = '{{ url_for('register') }}' " id="createNewAcc" class="continueGrayButton" type="button" name="createNewAcc">Create new account</button>
     </form>
   </div>
 {% endblock %}

@@ -33,7 +33,7 @@ Header HERE
     <div class="divider">
       Already have Account?
     </div>
-    <button class="continueGrayButton" type="button" name="toSignIn">Sign In</button>
+    <button onclick="window.location.href = '{{ url_for('login') }}'" class="continueGrayButton" type="button" name="toSignIn">Sign In</button>
   </div>
 {% endblock %}
 

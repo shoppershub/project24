@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Home page{% endblock %}
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/mainc.css') }}">
+{% endblock %}
+{% block jscript %}
+  <script type="text/javascript" src="{{ url_for('static',filename='jscript/mainj.js') }}"></script>
+{% endblock %}
+{% block header %}
+  {% include 'mainHeader.html' %}
+{% endblock %}
+{% block middle %}
+  {% include 'slideShowBar.html' %}
+{% endblock %}
+{% block footer %}
+{% endblock %}
