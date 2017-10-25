@@ -13,5 +13,9 @@ def login():
 def register():
     return render_template('register.html')
 
+@app.route('/customerCare')
+def customerCare():
+    return render_template('customerCare.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
