@@ -12,7 +12,7 @@ Header HERE
 
 {% block middle %}
   <div class="mainBlock">
-    <form method="post">
+    <form method="post" action="{{ url_for('login') }}">
       <h1>Login</h1>
       <div class="labelRow">
         <label for="ap_email" class="formLabel">

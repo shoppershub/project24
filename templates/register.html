@@ -10,7 +10,7 @@ Header HERE
 
 {% block middle %}
   <div class="mainBlock">
-    <form method="post">
+    <form method="post" action = "{{ url_for('register') }}">
       <h1>Create Account</h1>
       <div class="labelRow">
         <label for="ap_name" class="formLabel">Your name</label>

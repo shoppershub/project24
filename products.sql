@@ -1,0 +1,2 @@
+CREATE TABLE products(name TEXT NOT NULL, brand TEXT NOT NULL, color TEXT NOT NULL, storage TEXT NOT NULL, price NUMBER NOT NULL);
+CREATE TABLE user(name TEXT NOT NULL, email TEXT NOT NULL, password TEXT NOT NULL);

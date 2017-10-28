@@ -3,6 +3,7 @@
 {% block title %}Home page{% endblock %}
 {% block css %}
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/mainc.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/product.css') }}">
 {% endblock %}
 {% block jscript %}
   <script type="text/javascript" src="{{ url_for('static',filename='jscript/mainj.js') }}"></script>
@@ -11,7 +12,14 @@
   {% include 'mainHeader.html' %}
 {% endblock %}
 {% block middle %}
+
   {% include 'slideShowBar.html' %}
+
+  <div class="productList">
+    {% include 'productsLists.html' %}
+  </div>
+
 {% endblock %}
+
 {% block footer %}
 {% endblock %}

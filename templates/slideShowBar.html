@@ -6,8 +6,10 @@
   <div class="slide">
     <img src="{{ url_for('static',filename='images/iphone8.jpeg') }}" class="iphone8">
   </div>
-  <a class="prev" onclick="runSlide(-1)">&#10094;</a>
-  <a class="next" onclick="runSlide(1)">&#10095;</a>
+  <img class="prev" src="{{ url_for('static',filename='images/arrow.svg') }}" alt="leftarrow" onclick="runSlide(-1)">
+  <img class="next" src="{{ url_for('static',filename='images/arrow.svg') }}" alt="rightarrow" onclick="runSlide(1)">
+  <!---<a class="prev" onclick="runSlide(-1)">&#10094;</a>
+  <a class="next" onclick="runSlide(1)">&#10095;</a>--->
   <script>
     var slideindex=1;
     showSlide(slideindex);
