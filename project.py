@@ -75,6 +75,15 @@ def customerCare():
     return render_template('customerCare.html')
 
 ''' Only for admins '''
+@app.route('/samsung')
+def samsung():
+    return render_template('samsung.html')
+@app.route('/redmi')
+def redmi():
+    return render_template('redmi.html')
+@app.route('/apple')
+def apple():
+    return render_template('apple.html')
 @app.route('/listUsers')
 def listUsers():
     con = sql.connect('products.db')
