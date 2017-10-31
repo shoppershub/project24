@@ -3,14 +3,16 @@
 {% block css %}
   <link rel="stylesheet" href="{{ url_for('static',filename='css/register.css') }}">
 {% endblock %}
-
+{%block jscript%}
+<script type="text/javascript" src="{{ url_for('static',filename='jscript/match.js') }}"></script>
+{%endblock%}
 {% block header %}
 Header HERE
 {% endblock %}
 
 {% block middle %}
   <div class="mainBlock">
-    <form method="post" action = "{{ url_for('register') }}">
+    <form method="post" action = "{{ url_for('register') }}" onsubmit="return f1()">
       <h1>Create Account</h1>
       <div class="labelRow">
         <label for="ap_name" class="formLabel">Your name</label>

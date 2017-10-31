@@ -181,7 +181,7 @@ h1.timeremaining{
 .dc
 {
 	display:none;
-	position:relative;
+	position:absolute;
 	background-color:white;
 	width:120px;
 	height:30px;
@@ -198,6 +198,7 @@ h1.timeremaining{
 	height:150px;
 	z-index: 2;
 	font-size:20px;
+	margin: 0px 0px 0px 0px;
 
 }
 .drop:hover .dc{display:block;}
@@ -212,5 +213,6 @@ h1.timeremaining{
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-
+	
 }
+

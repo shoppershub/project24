@@ -2,4 +2,35 @@
 
 {% block title%}Samsung{%endblock%}
 {%block css%}<link rel="stylesheet" href="{{ url_for('static',filename='css/mainc.css')}}">{%endblock%}
-{%block header%}<div style="width:200px;height:40px;display:inline-block;"><h1>Samsung</h1></div>{%include 'mainHeader.html'%}{%endblock%}
+{%block header%}<div style="width:200px;height:40px;display:inline-block;"><h1>Samsung</h1></div>{%include 'mainHeader.html'%}
+
+<div >
+		<div class="drop" style="margin:25px 0px 0px 200px;float:left;"><button class="b1">Select Filter Here</button>
+		<div class="dc"><button type="button" class="mobile" style="width:200px;height:30px;display:inline-block;">filter by RAM</button>
+		<div class="mobiledc" style="height:190px;">			
+				<a href="#">below 1GB</a>
+				<a href="#">between 1GB to 2 GB</a>
+				<a href="#">between 2GB to 3GB</a>
+				<a href="#">more than 3GB</a>
+				
+			
+		</div>
+		</div>
+</div>	
+
+<div style="display:inline-block;margin:25px 0px 0px 200px;">
+	<form method="post">
+		<select>
+			<option>Select Sort Here</option>
+			<option>Sort By Price</option>
+			<option>Sort By RAM</option>
+			<option>Sort By memory</option>
+		</select>
+	</form>
+	</div>
+</div>		
+
+
+
+
+{%endblock%}
