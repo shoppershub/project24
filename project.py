@@ -31,7 +31,7 @@ def login():
             if enteredPassword == storedPassword:
                 return render_template('welcome_user.html',msg = "Welcome back " + userEmail, a_user = True)
             else:
-                return render_template('welcome_user.html',msg = "New User?", a_user = False)
+                return render_template('welcome_user.html',msg = "wrong password!", a_user = False)
         except TypeError:
             return render_template('welcome_user.html',msg = "New User?", a_user = False)
 
@@ -72,19 +72,19 @@ def customerCare():
 ''' Only for admins '''
 @app.route('/samsung')
 def samsung():
-    products = GetData('SELECT * FROM products');
-    return render_template('samsung.html', products = products)
+    samsung = GetData('SELECT * FROM products');
+    return render_template('samsung.html', products = samsung)
 
 @app.route('/redmi')
 def redmi():
-    products = GetData('SELECT * FROM products');
-    return render_template('redmi.html', products = products)
+    redmi = GetData('SELECT * FROM products');
+    return render_template('redmi.html', products = redmi)
 
 
 @app.route('/apple')
 def apple():
-    products = GetData('SELECT * FROM products');
-    return render_template('apple.html', products = products)
+    apple = GetData('SELECT * FROM products');
+    return render_template('apple.html', products = apple)
 
 
 
