@@ -1,18 +1,13 @@
 import sqlite3 as sql
 from flask import Flask,render_template,request
+from SQL_execute import GetData
+
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     # TODO - Add Images in database
-    con = sql.connect('products.db')
-    con.row_factory = sql.Row
-
-    cur = con.cursor()
-    cur.execute('SELECT * FROM products')
-
-    products = cur.fetchall()
-    con.close()
+    products = GetData('SELECT * FROM products');
     return render_template('index.html', products = products)
 
 ''' Allows user to login, nothing else for now '''
@@ -77,13 +72,22 @@ def customerCare():
 ''' Only for admins '''
 @app.route('/samsung')
 def samsung():
-    return render_template('samsung.html')
+    products = GetData('SELECT * FROM products');
+    return render_template('samsung.html', products = products)
+
 @app.route('/redmi')
 def redmi():
-    return render_template('redmi.html')
+    products = GetData('SELECT * FROM products');
+    return render_template('redmi.html', products = products)
+
+
 @app.route('/apple')
 def apple():
-    return render_template('apple.html')
+    products = GetData('SELECT * FROM products');
+    return render_template('apple.html', products = products)
+
+
+
 @app.route('/listUsers')
 def listUsers():
     con = sql.connect('products.db')

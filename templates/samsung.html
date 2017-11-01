@@ -1,22 +1,25 @@
 {%extends "base.html"%}
 
 {% block title%}Samsung{%endblock%}
-{%block css%}<link rel="stylesheet" href="{{ url_for('static',filename='css/mainc.css')}}">{%endblock%}
+{%block css%}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/mainc.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/product.css') }}">
+{%endblock%}
 {%block header%}<div style="width:200px;height:40px;display:inline-block;"><h1>Samsung</h1></div>{%include 'mainHeader.html'%}
 
 <div >
 		<div class="drop" style="margin:25px 0px 0px 200px;float:left;"><button class="b1">Select Filter Here</button>
 		<div class="dc"><button type="button" class="mobile" style="width:200px;height:30px;display:inline-block;">filter by RAM</button>
-		<div class="mobiledc" style="height:190px;">			
+		<div class="mobiledc" style="height:190px;">
 				<a href="#">below 1GB</a>
 				<a href="#">between 1GB to 2 GB</a>
 				<a href="#">between 2GB to 3GB</a>
 				<a href="#">more than 3GB</a>
-				
-			
+
+
 		</div>
 		</div>
-</div>	
+</div>
 
 <div style="display:inline-block;margin:25px 0px 0px 200px;">
 	<form method="post">
@@ -28,9 +31,41 @@
 		</select>
 	</form>
 	</div>
-</div>		
+</div>
 
 
 
 
 {%endblock%}
+
+{% block middle %}
+<ul id="productList">
+
+  {% for product in products %}
+    <li>
+      <div class="product">
+        <div class="productImage">
+          <!--- TODO - Add image from DB --->
+          <a href="#"><img src="{{ url_for('static',filename='images/iPhone8.jpg') }}" alt="iPhone8"></a>
+        </div>
+        <div class="productName productDescription">
+            {{product["name"]}}
+          </div>
+          <div class="productCompany productDescription">
+            <span class="by">by</span>
+            <span class="companyName">{{product["brand"]}}</span>
+          </div>
+          <div class="productVariant productDescription">
+            <span id="variant">Variant :</span>
+            <span class="productColor">{{product["color"]}}</span>
+            <span class="productStorage">{{product["storage"]}}</span>
+          </div>
+          <div class="productPrice productDescription">
+            &#2352; {{product["price"]}}
+          </div>
+      </div>
+    </li>
+  {% endfor %}
+
+</ul>
+{% endblock %}
