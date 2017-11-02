@@ -1,0 +1,19 @@
+"Note 8","samsung","Black","64GB",67900
+"S8","samsung","Black","64GB",65000
+"S7 Edge","samsung","Gold","32GB",49000
+"Galaxy A8","samsung","Gold","32GB",35000
+"Galaxy J7 Pro","samsung","Black","64GB",20000
+"Galaxy On max","samsung","White","32GB",16900
+"iphone X","Apple","White","64GB",89000
+"iphone X","Apple","Black","256GB",104000
+"iphone 8","Apple","Gold","64GB",64000
+"iphone 8+","Apple","Gold","64GB",71000
+"iphone 7","Apple","White","32GB",45000
+"iphone 7+","Apple","Black","64GB",51000
+"iphone 8+","Apple","Gold","256GB",95000
+"Redmi Note 4","Redmi","Gold","32GB",12000
+"Redmi 4","Redmi","Grey","64GB",10000
+"Mi A1","Redmi","Black","64GB",15000
+"Mi Mix 2","Redmi","Gold","32GB",39000
+"Redmi Note 3","Redmi","Black","64GB",10000
+"Redmi 5A","Redmi","Gold","32GB",9000

@@ -72,18 +72,18 @@ def customerCare():
 ''' Only for admins '''
 @app.route('/samsung')
 def samsung():
-    samsung = GetData('SELECT * FROM products');
+    samsung = GetData('SELECT * FROM products where brand="samsung"');
     return render_template('samsung.html', products = samsung)
 
 @app.route('/redmi')
 def redmi():
-    redmi = GetData('SELECT * FROM products');
+    redmi = GetData('SELECT * FROM products where brand="Redmi"');
     return render_template('redmi.html', products = redmi)
 
 
 @app.route('/apple')
 def apple():
-    apple = GetData('SELECT * FROM products');
+    apple = GetData('SELECT * FROM products where brand="Apple"');
     return render_template('apple.html', products = apple)
 
 
