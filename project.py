@@ -7,8 +7,18 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     # TODO - Add Images in database
+    
+    con = sql.connect('products.db')
+    con.row_factory = sql.Row
+        
+    cur = con.cursor()
+    ret = cur.execute('SELECT * FROM img')
+    img = ret.fetchone()[0] #Might throw error
+    
+    con.close()
+
     products = GetData('SELECT * FROM products');
-    return render_template('index.html', products = products)
+    return render_template('index.html', products = products, imgPath = img)
 
 ''' Allows user to login, nothing else for now '''
 @app.route('/login',methods = ['POST','GET'])

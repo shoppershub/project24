@@ -1,3 +1,8 @@
+.productImage img {
+    height: 180px;
+    width: 180px;
+}
+
 #productList  {
   margin: 0;
   list-style-type: none;
