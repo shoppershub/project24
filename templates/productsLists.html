@@ -5,7 +5,7 @@
       <div class="product">
         <div class="productImage">
           <!--- TODO - Add image from DB --->
-          <a href="#"><img src="{{ url_for('static',filename=imgPath) }}" alt="iPhone8"></a>
+          <a href="#"><img src="{{ url_for('static',filename=product['image']) }}" alt="iPhone8"></a>
         </div>
         <div class="productName productDescription">
             {{product["name"]}}

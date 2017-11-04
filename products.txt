@@ -1,19 +1,19 @@
-"Note 8","samsung","Black","64GB",67900
-"S8","samsung","Black","64GB",65000
-"S7 Edge","samsung","Gold","32GB",49000
-"Galaxy A8","samsung","Gold","32GB",35000
-"Galaxy J7 Pro","samsung","Black","64GB",20000
-"Galaxy On max","samsung","White","32GB",16900
-"iphone X","Apple","White","64GB",89000
-"iphone X","Apple","Black","256GB",104000
-"iphone 8","Apple","Gold","64GB",64000
-"iphone 8+","Apple","Gold","64GB",71000
-"iphone 7","Apple","White","32GB",45000
-"iphone 7+","Apple","Black","64GB",51000
-"iphone 8+","Apple","Gold","256GB",95000
-"Redmi Note 4","Redmi","Gold","32GB",12000
-"Redmi 4","Redmi","Grey","64GB",10000
-"Mi A1","Redmi","Black","64GB",15000
-"Mi Mix 2","Redmi","Gold","32GB",39000
-"Redmi Note 3","Redmi","Black","64GB",10000
-"Redmi 5A","Redmi","Gold","32GB",9000
+"Note 8","samsung","Gold","64GB",67900,images/1.jpg
+"S8","samsung","Black","64GB",65000,images/2.jpg
+"S7 Edge","samsung","Gold","32GB",49000,images/3.jpg
+"Galaxy A8","samsung","Gold","32GB",35000,images/4.jpg
+"Galaxy J7 Pro","samsung","Black","64GB",20000,images/5.png
+"Galaxy On max","samsung","White","32GB",16900,images/6.jpeg
+"iphone X","Apple","White","64GB",89000,images/7.jpg
+"iphone X","Apple","Black","256GB",104000,images/8.jpg
+"iphone 8","Apple","Gold","64GB",64000,images/9.jpg
+"iphone 8+","Apple","Gold","64GB",71000,images/10.jpg
+"iphone 7","Apple","White","32GB",45000,images/11.jpg
+"iphone 7+","Apple","Black","64GB",51000,images/12.jpg
+"iphone 8+","Apple","Gold","256GB",95000,images/13.jpg
+"Redmi Note 4","Redmi","Gold","32GB",12000,images/14.jpg
+"Redmi 4","Redmi","Grey","64GB",10000,images/15.jpg
+"Mi A1","Redmi","Black","64GB",15000,images/16.jpg
+"Mi Mix 2","Redmi","Black","32GB",39000,images/17.jpg
+"Redmi Note 3","Redmi","Grey","64GB",10000,images/18.jpg
+"Redmi 5A","Redmi","Gold","32GB",9000,images/19.jpg
