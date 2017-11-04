@@ -8,8 +8,8 @@ app = Flask(__name__)
 def index():
        
     # TODO - Add Images in database
-       products = GetData('SELECT * FROM products');
-       return render_template('index.html', products = products)
+    products = GetData('SELECT * FROM products ORDER BY RANDOM() LIMIT 5');
+    return render_template('index.html', products = products)
 
 ''' Allows user to login, nothing else for now '''
 @app.route('/login',methods = ['POST','GET'])
