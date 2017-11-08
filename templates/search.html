@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Home page{% endblock %}
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/mainc.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/product.css') }}">
+{% endblock %}
+
+{% block header %}
+  {% include 'mainHeader.html' %}
+{% endblock %}
+{% block middle %}
+
+  
+	{% if found %}
+	<div class="productList">
+		{% include 'productsLists.html' %}
+	</div>
+	{% endif %}
+	
+	{% if not found %}
+	Product not found
+	{% endif %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

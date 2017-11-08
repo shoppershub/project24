@@ -8,7 +8,7 @@ app = Flask(__name__)
 def index():
        
     # TODO - Add Images in database
-    products = GetData('SELECT * FROM products ORDER BY RANDOM() LIMIT 5');
+    products = GetData('SELECT * FROM products ORDER BY RANDOM() LIMIT 5');    
     return render_template('index.html', products = products)
 
 ''' Allows user to login, nothing else for now '''
@@ -100,5 +100,22 @@ def listUsers():
     rows = cur.fetchall()
     return render_template('listUsers.html', rows = rows)
 
+@app.route('/searchResult',methods=["POST"])
+def search():
+    searchQ=request.form['searchbox']
+    con = sql.connect('products.db')
+    con.row_factory = sql.Row
+
+    cur = con.cursor()
+    cur.execute('SELECT * FROM products WHERE name LIKE ? OR brand LIKE ?',("%"+searchQ+"%","%"+searchQ+"%"))
+
+    products = cur.fetchall()
+    con.close()
+    if products == None:
+        found = False;
+    else :
+        found = True;
+    return render_template('search.html',products = products, found = found)
+    
 if __name__ == "__main__":
     app.run(debug=True)
