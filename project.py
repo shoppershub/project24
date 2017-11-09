@@ -87,7 +87,103 @@ def apple():
     apple = GetData('SELECT * FROM products where brand="Apple"');
     return render_template('apple.html', products = apple)
 
+@app.route('/applebelow32gb')
+def applebelow32gb():
+    apple = GetData('SELECT * FROM products where brand="Apple"');
+    below64gb=list()
+    for product in apple:
+        s=product["storage"]
+        st=s[0:-2]
+        if int(st)<=32:
+            below64gb.append(product)
+    return render_template('apple.html', products = below64gb)
 
+@app.route('/apple32gb64gb')
+def apple32gb64gb():
+    apple = GetData('SELECT * FROM products where brand="Apple"');
+    below64gb=list()
+    for product in apple:
+        s=product["storage"]
+        st=s[0:-2]
+        if int(st)>32 and int(st)<=64:
+            below64gb.append(product)
+    return render_template('apple.html', products = below64gb)
+
+@app.route('/apple64gb256gb')
+def apple64gb256gb():
+    apple = GetData('SELECT * FROM products where brand="Apple"');
+    below64gb=list()
+    for product in apple:
+        s=product["storage"]
+        st=s[0:-2]
+        if int(st)>64 and int(st)<=256:
+            below64gb.append(product)
+    return render_template('apple.html', products = below64gb)
+
+@app.route('/samsungbelow32gb')
+def samsungbelow32gb():
+    apple = GetData('SELECT * FROM products where brand="samsung"');
+    below64gb=list()
+    for product in apple:
+        s=product["storage"]
+        st=s[0:-2]
+        if int(st)<=32:
+            below64gb.append(product)
+    return render_template('samsung.html', products = below64gb)
+
+@app.route('/samsung32gb64gb')
+def samsung32gb64gb():
+    apple = GetData('SELECT * FROM products where brand="samsung"');
+    below64gb=list()
+    for product in apple:
+        s=product["storage"]
+        st=s[0:-2]
+        if int(st)>32 and int(st)<=64:
+            below64gb.append(product)
+    return render_template('samsung.html', products = below64gb)
+
+@app.route('/samsung64gb256gb')
+def samsung64gb256gb():
+    apple = GetData('SELECT * FROM products where brand="samsung"');
+    below64gb=list()
+    for product in apple:
+        s=product["storage"]
+        st=s[0:-2]
+        if int(st)>64 and int(st)<=256:
+            below64gb.append(product)
+    return render_template('samsung.html', products = below64gb)
+@app.route('/redmibelow32gb')
+def redmibelow32gb():
+    apple = GetData('SELECT * FROM products where brand="Redmi"');
+    below64gb=list()
+    for product in apple:
+        s=product["storage"]
+        st=s[0:-2]
+        if int(st)<=32:
+            below64gb.append(product)
+    return render_template('redmi.html', products = below64gb)
+
+@app.route('/redmi32gb64gb')
+def redmi32gb64gb():
+    apple = GetData('SELECT * FROM products where brand="Redmi"');
+    below64gb=list()
+    for product in apple:
+        s=product["storage"]
+        st=s[0:-2]
+        if int(st)>32 and int(st)<=64:
+            below64gb.append(product)
+    return render_template('redmi.html', products = below64gb)
+
+@app.route('/redmi64gb256gb')
+def redmi64gb256gb():
+    apple = GetData('SELECT * FROM products where brand="Redmi"');
+    below64gb=list()
+    for product in apple:
+        s=product["storage"]
+        st=s[0:-2]
+        if int(st)>64 and int(st)<=256:
+            below64gb.append(product)
+    return render_template('redmi.html', products = below64gb)
 
 @app.route('/listUsers')
 def listUsers():

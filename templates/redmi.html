@@ -11,10 +11,9 @@
 		<div class="drop" style="margin:25px 0px 0px 200px;float:left;"><button class="b1">Select Filter Here</button>
 		<div class="dc"><button type="button" class="mobile" style="width:200px;height:30px;display:inline-block;">filter by RAM</button>
 		<div class="mobiledc" style="height:190px;">
-				<a href="#">below 1GB</a>
-				<a href="#">between 1GB to 2 GB</a>
-				<a href="#">between 2GB to 3GB</a>
-				<a href="#">more than 3GB</a>
+			<a href="{{ url_for('redmibelow32gb') }}">below 32GB</a>
+			<a href="{{ url_for('redmi32gb64gb') }}">between 32GB to 64 GB</a>
+			<a href="{{ url_for('redmi64gb256gb') }}">between 64GB to 256GB</a>
 
 
 		</div>
