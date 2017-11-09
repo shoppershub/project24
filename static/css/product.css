@@ -1,6 +1,6 @@
 .productImage img {
     height: 180px;
-    width: 180px;
+    width: 200px;
     border-radius: 5px;
 }
 
@@ -12,12 +12,12 @@
 
 #productList li {
   float: left;
-  margin: 10px 0px 0px 10px;
+  margin: 10px 60px 0px 10px;
 }
 
 .product {
   border-style: solid;
-  width: 180px;
+  width: 250px;
   border-radius: 5px;
   border-width: thin;
   height:290px;
