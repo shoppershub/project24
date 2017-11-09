@@ -1,9 +1,13 @@
 <div id="headdiv">
 <ul>
   <li id="ul1"><a href="{{ url_for('customerCare') }}">Customer Care</a></li>
-  <li id="ul1"><a href="{{ url_for('register') }}">sign up</li>
-  <li id="ul1"><a href="{{ url_for('login') }}">login</a></li>
-
+  {% if logged %}
+    <li id="ul1">Hello, {{username}}</li>
+    <li id="ul1"><a href="{{ url_for('logout') }}">logout</a></li>
+  {% else %}
+    <li id="ul1"><a href="{{ url_for('register') }}">sign up</li>
+    <li id="ul1"><a href="{{ url_for('login') }}">login</a></li>
+  {% endif %}
 </ul>
 </div>
 
