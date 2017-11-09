@@ -119,6 +119,8 @@ def search():
     else :
         found = True;
     return render_template('search.html',products = products, found = found)
-
+@app.route('/productInfo')
+def productInfo():
+    return render_template('productInfo.html')
 if __name__ == "__main__":
     app.run(debug=True)
