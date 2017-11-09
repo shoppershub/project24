@@ -11,17 +11,15 @@
 {% endblock %}
 {% block middle %}
 
-  
 	{% if found %}
-	<div class="productList">
-		{% include 'productsLists.html' %}
-	</div>
+  	<div class="productList">
+  		{% include 'productsLists.html' %}
+  	</div>
+  {% else %}
+    Product not found!
 	{% endif %}
-	
-	{% if not found %}
-	Product not found
-	{% endif %}
-{% endblock %}
+
+{% endblock%}
 
 {% block footer %}
 {% endblock %}

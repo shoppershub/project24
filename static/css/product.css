@@ -1,6 +1,7 @@
 .productImage img {
     height: 180px;
     width: 180px;
+    border-radius: 5px;
 }
 
 #productList  {
@@ -17,8 +18,16 @@
 .product {
   border-style: solid;
   width: 180px;
-  border-radius: 3px;
+  border-radius: 5px;
   border-width: thin;
+  height:290px;
+}
+
+.product:hover {
+  outline: none;
+  border-color: gray;
+  box-shadow: 0 0 10px black;
+  height:
 }
 
 .productName {
