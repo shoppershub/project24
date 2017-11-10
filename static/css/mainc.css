@@ -177,10 +177,10 @@ h1.timeremaining{
 	color: white;
 
 }
-.drop
+.drop,.dropsort
 {
 
-	margin:30px 10px 0px 100px;
+	margin:30px 5px 0px 100px;
 	display:inline-block;
 
 
@@ -215,6 +215,15 @@ h1.timeremaining{
 	margin: 0px 0px 0px 0px;
 
 }
+#modc1 a
+{
+	color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+
+	
+}
 
 .drop:hover .dc{display:block;}
 .dc:hover .mobiledc{
@@ -230,16 +239,20 @@ h1.timeremaining{
     display: block;
 
 }
+.dropsort:hover .mobiledc{display:block;}
 #dropi
 {
-	margin:5px 0px 0px 200px;
-	float: left;
+	margin:5px 0px 0px 300px;
+	display:inline-block;
+	
+	float:left;
+	
 }
 #dci
 {
 
 	width:200px;
-	height:30px;
+	height:45px;
 	display:inline-block;
 }
 #mdci
@@ -247,4 +260,15 @@ h1.timeremaining{
 height:250px;
 width:200px;
 
+}
+#dcdiv
+{
+	height:30px;
+}
+#mainhdiv
+{
+	width:100%;
+	background-color:black;
+	height:50px;
+	margin:10px 0px 0px 0px;
 }

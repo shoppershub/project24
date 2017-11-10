@@ -237,6 +237,117 @@ def search():
         found = True;
     return render_template('search.html',products = products, found = found)
 
+@app.route('/samsbp')
+def samsbp():
+    samsort=GetData('SELECT * FROM products WHERE brand="samsung"')
+    samprice=list()
+    samsorted=list()
+    for product in samsort:
+        x=product["price"]
+        samprice.append(int(x))
+        
+    samprice.sort()
+    
+    for price in samprice:
+        for y in samsort:
+            if price==y["price"]:
+                samsorted.append(y)
+    return render_template('samsung.html',products=samsorted)
+
+@app.route('/samsbs')
+def samsbs():
+    samsort=GetData('SELECT * FROM products WHERE brand="samsung"')
+    samsorted=list()
+    for product in samsort:
+        x=product["storage"]
+        if x=="32GB":
+            samsorted.append(product)
+    for product in samsort:
+        x=product["storage"]
+        if x=="64GB":
+            samsorted.append(product)
+    for product in samsort:
+        x=product["storage"]
+        if x=="256GB":
+            samsorted.append(product)    
+    
+    
+    return render_template('samsung.html',products=samsorted)
+
+@app.route('/redmisbp')
+def redmisbp():
+    samsort=GetData('SELECT * FROM products WHERE brand="Redmi"')
+    samprice=list()
+    samsorted=list()
+    for product in samsort:
+        x=product["price"]
+        samprice.append(int(x))
+    samprice.sort()
+   
+    for price in samprice:
+        for y in samsort:
+            if price==y["price"]:
+                samsorted.append(y)
+    return render_template('redmi.html',products=samsorted)
+
+@app.route('/redmisbs')
+def redmisbs():
+    samsort=GetData('SELECT * FROM products WHERE brand="Redmi"')
+    samsorted=list()
+    for product in samsort:
+        x=product["storage"]
+        if x=="32GB":
+            samsorted.append(product)
+    for product in samsort:
+        x=product["storage"]
+        if x=="64GB":
+            samsorted.append(product)
+    for product in samsort:
+        x=product["storage"]
+        if x=="256GB":
+            samsorted.append(product)    
+    
+    
+    return render_template('redmi.html',products=samsorted)
+
+@app.route('/applesbp')
+def applesbp():
+    samsort=GetData('SELECT * FROM products WHERE brand="Apple"')
+    samprice=list()
+    samsorted=list()
+    for product in samsort:
+        x=product["price"]
+        samprice.append(int(x))
+    samprice.sort()
+   
+    for price in samprice:
+        for y in samsort:
+            if price==y["price"]:
+                samsorted.append(y)
+    return render_template('apple.html',products=samsorted)
+
+@app.route('/applesbs')
+def applesbs():
+    samsort=GetData('SELECT * FROM products WHERE brand="Apple"')
+    samsorted=list()
+    for product in samsort:
+        x=product["storage"]
+        if x=="32GB":
+            samsorted.append(product)
+    for product in samsort:
+        x=product["storage"]
+        if x=="64GB":
+            samsorted.append(product)
+    for product in samsort:
+        x=product["storage"]
+        if x=="256GB":
+            samsorted.append(product)    
+    
+    
+    return render_template('apple.html',products=samsorted)
+
+
+
 
 @app.route('/logout')
 def logout():

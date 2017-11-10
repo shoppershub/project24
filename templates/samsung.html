@@ -7,35 +7,28 @@
 {%endblock%}
 {%block header%}<div style="width:200px;height:40px;display:inline-block;"><h1>Samsung</h1></div>{%include 'mainHeader.html'%}
 
-<div >
-		<div class="drop" style="margin:25px 0px 0px 200px;float:left;"><button class="b1">Select Filter Here</button>
-		<div class="dc"><button type="button" class="mobile" style="width:200px;height:30px;display:inline-block;">filter by RAM</button>
-		<div class="mobiledc" style="height:190px;">
+<div id="mainhdiv">
+		<div class="drop" id="dropi"><button class="b1">Select Filter Here</button>
+		<div class="dc"><button type="button" class="mobile" id="dci">Filter by Storage</button>
+		<div class="mobiledc" style="height:190px;width:200px;">
 			<a href="{{ url_for('samsungbelow32gb') }}">below 32GB</a>
 			<a href="{{ url_for('samsung32gb64gb') }}">between 32GB to 64 GB</a>
 			<a href="{{ url_for('samsung64gb256gb') }}">between 64GB to 256GB</a>
 
-
-<div style="width:100%;background-color:black;height:50px;margin:10px 0px 0px 0px;">
-		<div class="drop" id="dropi"><button class="b1">Select Filter Here</button>
-		<div class="dc"><button type="button" class="mobile" id="dci">filter by Storage</button>
-		<div class="mobiledc" id="mdci">
-				<a href="#">below 1GB</a>
-				<a href="#">between 1GB to 2 GB</a>
-				<a href="#">between 2GB to 3GB</a>
-				<a href="#">more than 3GB</a>
-
-
-		</div>
-		</div>
 </div>
-<div class="drop" id="dropi"><button class="b1">Select Filter Here</button>
-<div class="dc"><button type="button" class="mobile" id="dci">Sort by Price</button>
-	<button type="button" class="mobile" id="dci">Sort by Memory</button>
+</div>
+</div>
+<div class="dropsort" id="dropi"><button class="b1">Select Sort Here</button>
+		<div class="mobiledc" id="modc1" style="height:120px;width:200px;">
+			<a href="{{ url_for('samsbp') }}">Sort By Price</a>
+			<a href="{{ url_for('samsbs') }}">Sort By Storage</a>
+			
 
 </div>
 </div>
 </div>
+
+
 
 
 
