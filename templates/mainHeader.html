@@ -1,9 +1,13 @@
 <div id="headdiv">
 <ul>
   <li id="ul1"><a href="{{ url_for('customerCare') }}">Customer Care</a></li>
-  <li id="ul1"><a href="{{ url_for('register') }}">sign up</li>
-  <li id="ul1"><a href="{{ url_for('login') }}">login</a></li>
-
+  {% if logged %}
+    <li id="ul1">Hello, {{username}}</li>
+    <li id="ul1"><a href="{{ url_for('logout') }}">logout</a></li>
+  {% else %}
+    <li id="ul1"><a href="{{ url_for('register') }}">sign up</li>
+    <li id="ul1"><a href="{{ url_for('login') }}">login</a></li>
+  {% endif %}
 </ul>
 </div>
 
@@ -11,8 +15,9 @@
 <form method="post" action="{{ url_for('search')}}">
 <input type="text" name="searchbox" id="search" size="70" required placeholder="Search by phone or company name"><input type="submit" id="sb"></form>
 </div>
-<div class="drop" style="margin:0px 0px 0px 30px;">
+<div class="drop">
 <button class="b1">Electronics</button>
+
 <div class="dc">
 <button type="button" class="mobile">MOBILES</button>
   <div class="mobiledc">
@@ -22,4 +27,13 @@
 
   </div>
 </div>
+</div>
+<div class="drop1">
+  <button class="b2">Electronics</button>
+  <button class="b2">Electronics</button>
+  <button class="b2">Electronics</button>
+  <button class="b2">Electronics</button>
+  <button class="b2">Electronics</button>
+  <button class="b2">Electronics</button>
+  <button class="b2">Electronics</button>
 </div>
