@@ -4,26 +4,23 @@ body {
 }
 
 .header {
-  position: absolute;
-  top: 0px;
   height: 300px;
   width: 100%;
   background-color: orange;
+  float: left;
 }
 
 .middle {
-  position: absolute;
-  top: 300px;
   width: 100%;
-  height: 1000px;
+  height: 1920px;
+  float: left;
 }
 
 .footer {
-  position: absolute;
-  top: 1300px;
   width: 100%;
   height: 160px;
   background-color: green;
+  float: left;
 }
 
 .formLabel {

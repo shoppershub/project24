@@ -2,8 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <script type="text/javascript" src="{{ url_for('static',filename='jscript/products.js') }}"></script>
     {% block css %}
     {% endblock %}
     {% block jscript %}

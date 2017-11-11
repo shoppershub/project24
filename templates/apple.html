@@ -20,7 +20,6 @@
 		<div class="mobiledc" id="modc1" style="height:120px;width:200px;">
 			<a href="{{ url_for('applesbp') }}">Sort By Price</a>
 			<a href="{{ url_for('applesbs') }}">Sort By Storage</a>
-			
 
 </div>
 </div>
@@ -30,33 +29,7 @@
 
 {%endblock%}
 {% block middle %}
-<ul id="productList">
-
-  {% for product in products %}
-    <li>
-      <div class="product">
-        <div class="productImage">
-          <!--- TODO - Add image from DB --->
-          <a href="#"><img src="{{ url_for('static',filename=product['image']) }}" alt="iPhone8"></a>
-        </div>
-        <div class="productName productDescription">
-            {{product["name"]}}
-          </div>
-          <div class="productCompany productDescription">
-            <span class="by">by</span>
-            <span class="companyName">{{product["brand"]}}</span>
-          </div>
-          <div class="productVariant productDescription">
-            <span id="variant">Variant :</span>
-            <span class="productColor">{{product["color"]}}</span>
-            <span class="productStorage">{{product["storage"]}}</span>
-          </div>
-          <div class="productPrice productDescription">
-            &#2352; {{product["price"]}}
-          </div>
-      </div>
-    </li>
-  {% endfor %}
-
-</ul>
+	<div class="productList">
+		{% include 'productsLists.html' %}
+	</div>
 {% endblock %}

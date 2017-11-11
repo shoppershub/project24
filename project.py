@@ -87,6 +87,58 @@ def register():
             return render_template('result.html', msg = msg)
             #TODO - Differentiate Admins and user by radiobutton
 
+@app.route('/logout')
+def logout():
+    # remove the username from the session if it's there
+    session.pop('username', None)
+    return redirect(url_for('index'))
+
+@app.route('/listUsers')
+def listUsers():
+    con = sql.connect('products.db')
+    con.row_factory = sql.Row
+
+    cur = con.cursor()
+    cur.execute('SELECT * FROM user')
+
+    rows = cur.fetchall()
+    return render_template('listUsers.html', rows = rows)
+
+@app.route('/searchResult',methods=["POST"])
+def search():
+    searchQ=request.form['searchbox']
+    if not searchQ:
+        return render_template('search.html',found = False)
+
+    con = sql.connect('products.db')
+    con.row_factory = sql.Row
+
+    cur = con.cursor()
+    cur.execute('SELECT * FROM products WHERE name LIKE ? OR brand LIKE ?',("%"+searchQ+"%","%"+searchQ+"%"))
+
+    products = cur.fetchall()
+    con.close()
+
+    if products == [] :
+        found = False;
+    else :
+        found = True;
+    return render_template('search.html',products = products, found = found)
+
+@app.route('/productInfo/<name>')
+def productInfo(name):
+    print(name)
+
+    con = sql.connect('products.db')
+    con.row_factory = sql.Row
+
+    cur = con.cursor()
+    cur.execute('SELECT * FROM products WHERE name = ?',(name,))
+
+    products = cur.fetchall()
+    con.close()
+    return render_template('productInfo.html',products = products)
+
 @app.route('/customerCare')
 def customerCare():
     return render_template('customerCare.html')
@@ -206,36 +258,6 @@ def redmi64gb256gb():
             below64gb.append(product)
     return render_template('redmi.html', products = below64gb)
 
-@app.route('/listUsers')
-def listUsers():
-    con = sql.connect('products.db')
-    con.row_factory = sql.Row
-
-    cur = con.cursor()
-    cur.execute('SELECT * FROM user')
-
-    rows = cur.fetchall()
-    return render_template('listUsers.html', rows = rows)
-
-@app.route('/searchResult',methods=["POST"])
-def search():
-    searchQ=request.form['searchbox']
-    if not searchQ:
-        return render_template('search.html',found = False)
-
-    con = sql.connect('products.db')
-    con.row_factory = sql.Row
-
-    cur = con.cursor()
-    cur.execute('SELECT * FROM products WHERE name LIKE ? OR brand LIKE ?',("%"+searchQ+"%","%"+searchQ+"%"))
-
-    products = cur.fetchall()
-    con.close()
-    if products == None:
-        found = False;
-    else :
-        found = True;
-    return render_template('search.html',products = products, found = found)
 
 @app.route('/samsbp')
 def samsbp():
@@ -245,9 +267,7 @@ def samsbp():
     for product in samsort:
         x=product["price"]
         samprice.append(int(x))
-        
     samprice.sort()
-    
     for price in samprice:
         for y in samsort:
             if price==y["price"]:
@@ -269,9 +289,7 @@ def samsbs():
     for product in samsort:
         x=product["storage"]
         if x=="256GB":
-            samsorted.append(product)    
-    
-    
+            samsorted.append(product)
     return render_template('samsung.html',products=samsorted)
 
 @app.route('/redmisbp')
@@ -283,7 +301,6 @@ def redmisbp():
         x=product["price"]
         samprice.append(int(x))
     samprice.sort()
-   
     for price in samprice:
         for y in samsort:
             if price==y["price"]:
@@ -305,9 +322,7 @@ def redmisbs():
     for product in samsort:
         x=product["storage"]
         if x=="256GB":
-            samsorted.append(product)    
-    
-    
+            samsorted.append(product)
     return render_template('redmi.html',products=samsorted)
 
 @app.route('/applesbp')
@@ -319,7 +334,6 @@ def applesbp():
         x=product["price"]
         samprice.append(int(x))
     samprice.sort()
-   
     for price in samprice:
         for y in samsort:
             if price==y["price"]:
@@ -341,20 +355,8 @@ def applesbs():
     for product in samsort:
         x=product["storage"]
         if x=="256GB":
-            samsorted.append(product)    
-    
-    
+            samsorted.append(product)
     return render_template('apple.html',products=samsorted)
-
-
-
-
-@app.route('/logout')
-def logout():
-    # remove the username from the session if it's there
-    session.pop('username', None)
-    return redirect(url_for('index'))
-
 
 if __name__ == "__main__":
     app.run(debug=True)

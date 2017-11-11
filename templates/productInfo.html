@@ -1,1 +1,40 @@
-{% extends "base.html" %}
+{%extends "base.html"%}
+
+{% block title%}{%endblock%}
+{%block css%}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/mainc.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/product.css') }}">
+{%endblock%}
+{%block header%}<div style="width:200px;height:40px;display:inline-block;"><h1></h1></div>{%include 'mainHeader.html'%}
+
+{%endblock%}
+{% block middle %}
+<ul id="productList">
+
+  {% for product in products %}
+    <li>
+      <div class="product">
+        <div class="productImage">
+          <center><img src="{{ url_for('static',filename=product['image']) }}" alt="{{product['name']}}"></center>
+        </div>
+        <div class="productName productDescription">
+            {{product["name"]}}
+          </div>
+          <div class="productCompany productDescription">
+            <span class="by">by</span>
+            <span class="companyName">{{product["brand"]}}</span>
+          </div>
+          <div class="productVariant productDescription">
+            <span id="variant">Variant :</span>
+            <span class="productColor">{{product["color"]}}</span>
+            <span class="productStorage">{{product["storage"]}}</span>
+          </div>
+          <div class="productPrice productDescription">
+            &#2352; {{product["price"]}}
+          </div>
+      </div>
+    </li>
+  {% endfor %}
+
+</ul>
+{% endblock %}
