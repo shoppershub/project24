@@ -258,7 +258,6 @@ def redmi64gb256gb():
             below64gb.append(product)
     return render_template('redmi.html', products = below64gb)
 
-
 @app.route('/samsbp')
 def samsbp():
     samsort=GetData('SELECT * FROM products WHERE brand="samsung"')
@@ -267,7 +266,11 @@ def samsbp():
     for product in samsort:
         x=product["price"]
         samprice.append(int(x))
+        
     samprice.sort()
+    for i in range(0,len(samprice)-1):
+        if samprice[i]==samprice[i+1]:
+            samprice[i]=0
     for price in samprice:
         for y in samsort:
             if price==y["price"]:
@@ -289,7 +292,9 @@ def samsbs():
     for product in samsort:
         x=product["storage"]
         if x=="256GB":
-            samsorted.append(product)
+            samsorted.append(product)    
+    
+    
     return render_template('samsung.html',products=samsorted)
 
 @app.route('/redmisbp')
@@ -301,6 +306,9 @@ def redmisbp():
         x=product["price"]
         samprice.append(int(x))
     samprice.sort()
+    for i in range(0,len(samprice)-1):
+        if samprice[i]==samprice[i+1]:
+            samprice[i]=0
     for price in samprice:
         for y in samsort:
             if price==y["price"]:
@@ -322,7 +330,9 @@ def redmisbs():
     for product in samsort:
         x=product["storage"]
         if x=="256GB":
-            samsorted.append(product)
+            samsorted.append(product)    
+    
+    
     return render_template('redmi.html',products=samsorted)
 
 @app.route('/applesbp')
@@ -334,6 +344,9 @@ def applesbp():
         x=product["price"]
         samprice.append(int(x))
     samprice.sort()
+    for i in range(0,len(samprice)-1):
+        if samprice[i]==samprice[i+1]:
+            samprice[i]=0
     for price in samprice:
         for y in samsort:
             if price==y["price"]:
@@ -355,8 +368,11 @@ def applesbs():
     for product in samsort:
         x=product["storage"]
         if x=="256GB":
-            samsorted.append(product)
+            samsorted.append(product)    
+    
+    
     return render_template('apple.html',products=samsorted)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
