@@ -1,6 +1,6 @@
 import sqlite3 as sql
-from flask import Flask,render_template,request,redirect,url_for,session
-from SQL_execute import GetData
+from flask import Flask,render_template,request,redirect,url_for,session,jsonify
+from SQL_execute import GetData, dict_factory
 
 app = Flask(__name__)
 app.secret_key = 'project24'
@@ -104,26 +104,39 @@ def listUsers():
     rows = cur.fetchall()
     return render_template('listUsers.html', rows = rows)
 
-@app.route('/searchResult',methods=["POST"])
+@app.route('/search',methods=["POST","GET"])
 def search():
-    searchQ=request.form['searchbox']
-    if not searchQ:
-        return render_template('search.html',found = False)
+    if request.method == "POST":
+        searchQ=request.form['searchbox']
+        if not searchQ:
+            return render_template('search.html',found = False)
 
-    con = sql.connect('products.db')
-    con.row_factory = sql.Row
+        con = sql.connect('products.db')
+        con.row_factory = sql.Row
 
-    cur = con.cursor()
-    cur.execute('SELECT * FROM products WHERE name LIKE ? OR brand LIKE ?',("%"+searchQ+"%","%"+searchQ+"%"))
+        cur = con.cursor()
+        cur.execute('SELECT * FROM products WHERE name LIKE ? OR brand LIKE ?',("%"+searchQ+"%","%"+searchQ+"%"))
 
-    products = cur.fetchall()
-    con.close()
+        products = cur.fetchall()
+        con.close()
 
-    if products == [] :
-        found = False;
-    else :
-        found = True;
-    return render_template('search.html',products = products, found = found)
+        if products == [] :
+            found = False;
+        else :
+            found = True;
+        return render_template('search.html',products = products, found = found)
+    else:
+        q = request.args.get('q') + "%"
+        con = sql.connect('products.db')
+        con.row_factory = dict_factory
+
+        cur = con.cursor()
+        cur.execute('SELECT * FROM products WHERE name LIKE ? OR brand LIKE ?',(q,q))
+
+        products = cur.fetchall()
+        con.close()
+
+        return jsonify(products)
 
 @app.route('/productInfo/<name>')
 def productInfo(name):
@@ -266,7 +279,7 @@ def samsbp():
     for product in samsort:
         x=product["price"]
         samprice.append(int(x))
-        
+
     samprice.sort()
     for i in range(0,len(samprice)-1):
         if samprice[i]==samprice[i+1]:
@@ -292,9 +305,9 @@ def samsbs():
     for product in samsort:
         x=product["storage"]
         if x=="256GB":
-            samsorted.append(product)    
-    
-    
+            samsorted.append(product)
+
+
     return render_template('samsung.html',products=samsorted)
 
 @app.route('/redmisbp')
@@ -330,9 +343,9 @@ def redmisbs():
     for product in samsort:
         x=product["storage"]
         if x=="256GB":
-            samsorted.append(product)    
-    
-    
+            samsorted.append(product)
+
+
     return render_template('redmi.html',products=samsorted)
 
 @app.route('/applesbp')
@@ -368,9 +381,9 @@ def applesbs():
     for product in samsort:
         x=product["storage"]
         if x=="256GB":
-            samsorted.append(product)    
-    
-    
+            samsorted.append(product)
+
+
     return render_template('apple.html',products=samsorted)
 
 

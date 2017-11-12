@@ -49,10 +49,32 @@ body
 	margin:80px 0px 0px 425px;
 	padding:5px 5px 5px 5px;
 	font-size:15px;
-
-
-
 }
+
+.txtHint {
+	display: none;
+	position: absolute;
+
+	width : 45%;
+	margin-left: 425px;
+	background-color: rgba(192, 192, 192, 0.5);
+}
+
+#txtHint {
+	list-style-type: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+#txtHint li {
+	border-style: solid;
+	border-width: thin;
+}
+
+#txtHint li:hover {
+	background-color: rgba(200,200,200,0.5);
+}
+
 #sb
 {
 	background-color:rgb(200,0,100);
@@ -222,7 +244,7 @@ h1.timeremaining{
     text-decoration: none;
     display: block;
 
-	
+
 }
 
 .drop:hover .dc{display:block;}
@@ -244,9 +266,9 @@ h1.timeremaining{
 {
 	margin:5px 0px 0px 300px;
 	display:inline-block;
-	
+
 	float:left;
-	
+
 }
 #dci
 {

@@ -6,20 +6,31 @@ function GetValues(productClass) {
   window.location.href = href;
 }
 
-  /*var request = new XMLHttpRequest();
-  request.open('POST', '/productInfo', true);
-
-  request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-  request.send(name);
-  /*if (request.status === 200) {
-    request.abort();
-    console.log(request.responseText);
+function showHint(str) {
+  if(str.length == 0) {
+    document.getElementById('hintBox').style.display = 'none';
+    document.getElementById('txtHint').innerHTML = "";
+    return;
   }
-  //request.close()
-  /*request.onload = function(){if (httpRequest.readyState === 2) {
-    request.abort();
+  else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var txtHint = JSON.parse(this.responseText);
+        var display = "";
+        for (var i = 0; i < txtHint.length; i++) {
+          display += "<li id ='hint' onclick='writeHint(this.innerHTML)'>" + txtHint[i].name + "</li>";
+        }
+        document.getElementById('hintBox').style.display = 'block';
+        document.getElementById('txtHint').innerHTML = display;
+      }
+    };
+    xmlhttp.open("GET",'/search?q=' + str, true);
+    xmlhttp.send();
   }
 }
-  /*.done(funcion(result) {
-    console.log(result)
-  }*/
+
+function writeHint(hint) {
+  document.getElementsByName('searchbox')[0].value = hint;
+}
+  
