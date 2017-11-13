@@ -1,0 +1,29 @@
+<ul id="productList">
+
+  {% for product in products %}
+    <li>
+      <div class="product" onclick="GetValues(this);">
+        <div class="productImage">
+          <!--- TODO - Add image from DB --->
+          <center><img src="{{ url_for('static',filename=product['image']) }}" alt="{{product['name']}}"></center>
+        </div>
+        <div class="productName productDescription" id="productName">
+            {{product["name"]}}
+          </div>
+          <div class="productCompany productDescription">
+            <span class="by">by</span>
+            <span class="companyName">{{product["brand"]}}</span>
+          </div>
+          <div class="productVariant productDescription">
+            <span id="variant">Variant :</span>
+            <span class="productColor">{{product["color"]}}</span>
+            <span class="productStorage">{{product["storage"]}}</span>
+          </div>
+          <div class="productPrice productDescription">
+            &#2352; {{product["price"]}}
+          </div>
+      </div>
+    </li>
+  {% endfor %}
+
+</ul>

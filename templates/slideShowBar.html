@@ -1,0 +1,26 @@
+<div class="mySlideShow">
+  <div class="divdeals"><img src="{{ url_for('static',filename='images/deals.jpeg') }}" class="deals"></div>
+  <div class="slide">
+    <img src="{{ url_for('static',filename='images/note8.jpeg') }}" class="note8">
+  </div>
+  <div class="slide">
+    <img src="{{ url_for('static',filename='images/iphone8.jpeg') }}" class="iphone8">
+  </div>
+  <img class="prev" src="{{ url_for('static',filename='images/arrow.svg') }}" alt="leftarrow" onclick="runSlide(-1)">
+  <img class="next" src="{{ url_for('static',filename='images/arrow.svg') }}" alt="rightarrow" onclick="runSlide(1)">
+  <!---<a class="prev" onclick="runSlide(-1)">&#10094;</a>
+  <a class="next" onclick="runSlide(1)">&#10095;</a>--->
+  <script>
+    var slideindex=1;
+    showSlide(slideindex);
+  </script>
+</div>
+<div class="timefordeals">
+    <h1 class="timeremaining">Time Remaining: </h1>
+    <p id="time"></p>
+    <script>
+      var countdowndate=new Date("Jan 1, 2018 00:00:00").getTime();
+      var x=setInterval(calctime,1000);
+    </script>
+    <p class="hurry"><u>Hurry!!!!!</u></p>
+</div>

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/register.css') }}">
+{% endblock %}
+{%block jscript%}
+<script type="text/javascript" src="{{ url_for('static',filename='jscript/match.js') }}"></script>
+{%endblock%}
+{% block header %}
+Header HERE
+{% endblock %}
+
+{% block middle %}
+  <div class="mainBlock">
+    <form method="post" action = "{{ url_for('register') }}" onsubmit="return f1()">
+      <h1>Create Account</h1>
+      <div class="labelRow">
+        <label for="ap_name" class="formLabel">Your name</label>
+      </div>
+      <input id="ap_name" class="inputField" type="text" name="name" autofocus required>
+      <div class="labelRow">
+        <label for="ap_email" class="formLabel">Email address</label>
+      </div>
+      <input id="ap_email" class="inputField" type="email" name="email" required>
+      <div class="labelRow">
+        <label for="ap_password" class="formLabel">Password</label>
+      </div>
+      <input id="ap_password" class="inputField" type="password" name="password" required>
+      <div class="labelRow">
+        <label for="ap_confirmPass" class="formLabel">Confirm Password</label>
+      </div>
+      <input id="ap_confirmPass" class="inputField" type="password" name="confirmPassword" required>
+      <input type="submit" class="continueYellowButton" name="register" value="Sign Me Up">
+    </form>
+    <div class="divider">
+      Already have Account?
+    </div>
+    <button onclick="window.location.href = '{{ url_for('login') }}'" class="continueGrayButton" type="button" name="toSignIn">Sign In</button>
+  </div>
+{% endblock %}
+
+{% block footer %}
+Footer HERE
+{% endblock %}
