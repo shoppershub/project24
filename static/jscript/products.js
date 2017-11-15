@@ -1,8 +1,11 @@
 function GetValues(productClass) {
   //alert(data.getElementsByClassName('productName')[0].innerHTML);
+  //alert(productClass.getElementsByClassName('productStorage')[0].innerHTML);
   var getname = productClass.getElementsByClassName('productName')[0].innerHTML;
+  var getsize = productClass.getElementsByClassName('productStorage')[0].innerHTML;
+  var size = getsize.trim();
   var name = getname.trim();
-  var href = "/productInfo/" + name;
+  var href = "/productInfo/" + name + "/" + size;
   window.location.href = href;
 }
 
@@ -33,4 +36,3 @@ function showHint(str) {
 function writeHint(hint) {
   document.getElementsByName('searchbox')[0].value = hint;
 }
-  

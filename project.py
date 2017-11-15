@@ -138,15 +138,15 @@ def search():
 
         return jsonify(products)
 
-@app.route('/productInfo/<name>')
-def productInfo(name):
+@app.route('/productInfo/<name>/<storage>')
+def productInfo(name,storage):
     print(name)
 
     con = sql.connect('products.db')
     con.row_factory = sql.Row
 
     cur = con.cursor()
-    cur.execute('SELECT * FROM products WHERE name = ?',(name,))
+    cur.execute('SELECT * FROM products WHERE name = ? AND storage = ? ',(name,storage))
 
     products = cur.fetchall()
     con.close()
