@@ -13,11 +13,14 @@
 
   {% for product in products %}
     <li>
-      <div class="product">
+      <div class="product" onclick="GetValues(this);">
         <div class="productImage">
-          <center><img src="{{ url_for('static',filename=product['image']) }}" alt="{{product['name']}}"></center>
+          <!--- TODO - Add image from DB --->
+          <img src="{{ url_for('static',filename=product['image']) }}" alt="{{product['name']}}">
         </div>
-        <div class="productName productDescription">
+        <div class="productInfo">
+          <div class="info">
+          <div class="productName productDescription" id="productName">
             {{product["name"]}}
           </div>
           <div class="productCompany productDescription">
@@ -32,6 +35,8 @@
           <div class="productPrice productDescription">
             &#2352; {{product["price"]}}
           </div>
+        </div>
+      </div>
       </div>
     </li>
   {% endfor %}

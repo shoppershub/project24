@@ -3,9 +3,27 @@
   float: left;
 }
 
+.productImage {
+  float: left;
+  height: 100%;
+  width: 30%;
+}
+
+.productInfo {
+  float: left;
+  width: 70%;
+  height: 100%;
+}
+
+.info {
+  margin-top: 10%;
+}
+
 .productImage img {
-    height: 180px;
-    width: 200px;
+    height: 100%;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
     border-radius: 5px;
 }
 
