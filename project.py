@@ -154,6 +154,7 @@ def productInfo(name):
 
 @app.route('/customerCare')
 def customerCare():
+
     return render_template('customerCare.html')
 
 ''' Only for admins '''

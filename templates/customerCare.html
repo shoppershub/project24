@@ -1,1 +1,15 @@
 {% extends "base.html" %}
+{%block title%}Customer Care{%endblock%}
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/customercare.css') }}">
+{%endblock%}
+{%block header%}
+<div class="home"><a href="{{ url_for('index')}}">Home</a></div>
+{%endblock%}
+{%block middle%}
+<div class="cmiddle">
+<h2>Contact No.- 1800 208 2266(Toll Free)<br>
+email-xyz@xyz.com</h2>
+
+</div>
+{%endblock%}
