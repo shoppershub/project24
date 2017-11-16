@@ -1,14 +1,21 @@
 import sqlite3 as sql
+from functools import wraps
 from flask import Flask,render_template,request,redirect,url_for,session,jsonify
 from SQL_execute import GetData, dict_factory
 
 app = Flask(__name__)
 app.secret_key = 'project24'
 
+def login_required(f):
+    @wraps(f)
+    def fn(*args,**kwargs):
+        if 'username' not in session:
+            return redirect(url_for('login'))
+        return f(*args,**kwargs)
+    return fn
+
 @app.route('/')
 def index():
-
-    # TODO - Add Images in database
     products = GetData('SELECT * FROM products ORDER BY RANDOM() LIMIT 5');
 
     logged = False
@@ -94,6 +101,7 @@ def logout():
     return redirect(url_for('index'))
 
 @app.route('/listUsers')
+@login_required
 def listUsers():
     con = sql.connect('products.db')
     con.row_factory = sql.Row
