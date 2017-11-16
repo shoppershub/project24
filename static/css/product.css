@@ -30,7 +30,7 @@
 #productList  {
   margin: 0;
   list-style-type: none;
-
+  padding: 0;
 }
 
 #productList li {
