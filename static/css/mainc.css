@@ -40,6 +40,7 @@
 	margin-left: 7%;
 	margin-right: 1%;
 	float: left;
+	height: 32px;
 }
 
 #sb {
@@ -71,8 +72,11 @@
 	display: none;
 	position: absolute;
 
+	margin-left: 7%;
+	margin-top: 0;
+	float: left;
+	position: relative;
 	width : 45%;
-	margin-left: 425px;
 	background-color: rgba(192, 192, 192, 0.5);
 }
 
@@ -295,5 +299,5 @@ width:200px;
 	width:100%;
 	background-color:black;
 	height:50px;
-	margin:10px 0px 0px 0px;
+	float: left;
 }

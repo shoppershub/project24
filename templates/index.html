@@ -4,6 +4,7 @@
 {% block css %}
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/mainc.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/product.css') }}">
+  <link rel="stylesheet" tyoe="text/css" href="{{url_for('static',filename='css/index.css')}}">
 {% endblock %}
 {% block jscript %}
   <script type="text/javascript" src="{{ url_for('static',filename='jscript/mainj.js') }}"></script>
@@ -13,7 +14,9 @@
 {% endblock %}
 {% block middle %}
 
-  {% include 'slideShowBar.html' %}
+  <div class="slideShowBar">
+    {% include 'slideShowBar.html' %}
+  </div>
 
   <div class="productList">
     {% include 'productsLists.html' %}

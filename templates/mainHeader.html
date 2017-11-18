@@ -5,15 +5,17 @@
   <div class="links">
   <ul id="headnav">
     <li id="ul1"><a href="{{ url_for('customerCare') }}">Customer Care</a></li>
-    {% if logged %}
-      <li id="ul1">Hello, {{username}}</li>
-      <li id="ul1"><a href="{{ url_for('logout') }}">logout</a></li>
-    {% else %}
-      <li id="ul1"><a href="{{ url_for('register') }}">sign up</li>
-      <li id="ul1"><a href="{{ url_for('login') }}">login</a></li>
-    {% endif %}
+    {% if showLinks %}
+      {% if logged %}
+        <li id="ul1">Hello, {{username}}</li>
+        <li id="ul1"><a href="{{ url_for('logout') }}">logout</a></li>
+      {% else %}
+        <li id="ul1"><a href="{{ url_for('register') }}">sign up</li>
+        <li id="ul1"><a href="{{ url_for('login') }}">login</a></li>
+      {% endif %}
   </ul>
   </div>
+  {% endif %}
 </div>
 
 <div class="searchBox">
@@ -25,12 +27,11 @@
       <input type="submit" class="continueGrayButton">
     </div>
   </form>
-
   <div class="txtHint" id="hintBox">
     <ul id="txtHint"></ul>
   </div>
-
 </div>
+
 <div class="electronics">
   <div class="drop">
     <button class="b1">Electronics</button>
