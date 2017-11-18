@@ -4,6 +4,7 @@ from SQL_execute import GetData, dict_factory
 
 app = Flask(__name__)
 app.secret_key = 'project24'
+productscart=list()
 
 @app.route('/')
 def index():
@@ -151,6 +152,24 @@ def productInfo(name,storage):
     products = cur.fetchall()
     con.close()
     return render_template('productInfo.html',products = products)
+
+@app.route('/Cart/<name>/<storage>')
+def Cart(name,storage):
+
+    username=session['username']
+    productname=name
+    productstorage=storage
+    con = sql.connect('products.db')
+    con.row_factory = dict_factory
+    cur = con.cursor()
+    cur.execute('INSERT INTO cart(username,productname,storage) VALUES(?,?,?)', (username,productname,productstorage))
+    con.commit()
+    con.close()
+    addedproduct=GetData('SELECT * FROM products WHERE name=productname AND storage=productstorage')
+    productscart.append(addedproduct)
+    return render_template('cart.html', products = productscart, logged = True, username= username)
+
+
 
 @app.route('/customerCare')
 def customerCare():

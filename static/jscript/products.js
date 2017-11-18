@@ -36,3 +36,12 @@ function showHint(str) {
 function writeHint(hint) {
   document.getElementsByName('searchbox')[0].value = hint;
 }
+function getValuesForCart(){
+  var productClass=document.getElementsByClassName('product');
+  var getname = productClass.getElementsByClassName('productName')[0].innerHTML;
+  var getsize = productClass.getElementsByClassName('productStorage')[0].innerHTML;
+  var size = getsize.trim();
+  var name = getname.trim();
+  var href = "/Cart/" + name + "/" + size;
+  window.location.href = href;
+}
