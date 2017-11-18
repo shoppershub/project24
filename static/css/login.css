@@ -4,7 +4,7 @@
   width: 350px;
   left: 50%;
   margin-left: -175px;
-
+  float: left;
   padding-left: 15px;
   padding-right: 15px;
   border-style: solid;
@@ -18,8 +18,8 @@
 	flex-basis: 100%;
 	align-items: center;
 	color: rgba(0, 0, 0, 0.35);
-
-	margin: 8px 0px;
+  float: left;
+  width: 100%;
 }
 .divider::before,
 .divider::after {
@@ -39,4 +39,14 @@
 .forgotPass a{
   text-decoration: none;
   color: blue;
+}
+
+.errorMsg {
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  height: 30px;
+  background-color: rgba(180,216,231,.2);
+  color: red;
 }

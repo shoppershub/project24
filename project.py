@@ -2,6 +2,8 @@ import sqlite3 as sql
 from functools import wraps
 from flask import Flask,render_template,request,redirect,url_for,session,jsonify
 from SQL_execute import GetData, dict_factory
+from passlib.apps import custom_app_context as passHash
+
 app = Flask(__name__)
 
 app.secret_key = 'project24'
@@ -33,7 +35,7 @@ def index():
 @app.route('/login',methods = ['POST','GET'])
 def login():
     if request.method == 'GET':
-        return render_template('login.html',logged = False)
+        return render_template('login.html')
     else:
         try:
             enteredPassword = request.form['password']
@@ -46,20 +48,21 @@ def login():
             data = cur.execute('SELECT * FROM user WHERE email=?',(userEmail,))
             data = data.fetchall()
 
-            storedPassword = data[0]['password']
+            storedPassword = data[0]['password'] #Throws IndexError if no entry is found
             username = data[0]['name']
 
             con.close()
 
-            if enteredPassword == storedPassword:
+            if passHash.verify(enteredPassword,storedPassword):
                 session['username'] = username
                 return redirect(url_for('index'))
 
             else:
-                return render_template('welcome_user.html',msg = "wrong password!", a_user = False)
-        except TypeError as es:
+                return render_template('login.html',wrongPassword = True,userNotFound=False)
+
+        except IndexError as es:
             #print(es)
-            return render_template('welcome_user.html',msg = "New User?", a_user = False)
+            return render_template('login.html',userNotFound = True,wrongPassword=False)
 
 @app.route('/register', methods = ['POST', 'GET'])
 def register():
@@ -70,19 +73,33 @@ def register():
         try:
             name = request.form['name']
             email = request.form['email']
-            password = request.form['password']
+            password = passHash.hash(request.form['password'])
             confirmPassword = request.form['confirmPassword']
 
             # TODO - Values should not be null
+            #      - Done by Jscript
             # TODO - validate if passwords are same
-            # TODO - Hash the password
+
 
             with sql.connect("products.db") as con:
+                con.row_factory = dict_factory
                 cur = con.cursor()
-                cur.execute("INSERT INTO user (name,email,password) VALUES (?,?,?)",(name,email,password))
-                con.commit()
-                msg = "Record successfully added"
-                registered = True
+
+                cur.execute("SELECT * FROM user WHERE name=? OR email=?",(name,email))
+                users = cur.fetchall()
+                print(users)
+
+                if users:
+                    print("already!")
+                    registered = False
+                    alreadyUser = True
+
+                else:
+                    cur.execute("INSERT INTO user (name,email,password) VALUES (?,?,?)",(name,email,password))
+                    con.commit()
+                    msg = "Record successfully added"
+                    registered = True
+                    alreadyUser = False
         except:
             con.rollback()
             msg = "Error in insert operation"
@@ -93,7 +110,8 @@ def register():
                 session['username'] = name
                 return redirect(url_for('index'))
 
-            return render_template('result.html', msg = msg)
+            elif alreadyUser:
+                return render_template('register.html',alreadyUser = True)
             #TODO - Differentiate Admins and user by radiobutton
 
 @app.route('/logout')

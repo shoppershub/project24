@@ -32,12 +32,23 @@ Header HERE
       <div class="loginButton">
         <input id="signInSubmit" class="continueYellowButton" type="submit" name="login" value="Login">
       </div>
+        {% if wrongPassword %}
+          <div class="errorMsg">
+            Wrong Password.Try again
+          </div>
+        {% elif userNotFound %}
+          <div class="errorMsg">
+            New User? Register first
+          </div>
+        {% endif %}
       <div class="divider">
         <h5>New to site?</h5>
       </div>
       <button onclick="window.location.href = '{{ url_for('register') }}' " id="createNewAcc" class="continueGrayButton" type="button" name="createNewAcc">Create new account</button>
     </form>
+
   </div>
+
 {% endblock %}
 
 {% block footer %}

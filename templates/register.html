@@ -32,6 +32,11 @@ Header HERE
       <input id="ap_confirmPass" class="inputField" type="password" name="confirmPassword" required>
       <input type="submit" class="continueYellowButton" name="register" value="Sign Me Up">
     </form>
+    {% if alreadyUser %}
+      <div class="errorMsg">
+        You already have an account
+      </div>
+    {% endif %}
     <div class="divider">
       Already have Account?
     </div>

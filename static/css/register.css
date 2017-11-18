@@ -1,6 +1,6 @@
 .mainBlock {
   position: relative;
-  height: 500px;
+  height: 520px;
   width: 350px;
   left: 50%;
   margin-left: -175px;
@@ -18,7 +18,8 @@
 	flex-basis: 100%;
 	align-items: center;
 	color: rgba(0, 0, 0, 0.35);
-
+  float: left;
+  width: 100%;
 	margin: 8px 0px;
 }
 .divider::before,
@@ -30,4 +31,14 @@
 	font-size: 0px;
 	line-height: 0px;
 	margin: 0px 8px;
+}
+
+.errorMsg {
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  height: 30px;
+  background-color: rgba(180,216,231,.2);
+  color: red;
 }
