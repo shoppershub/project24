@@ -18,12 +18,12 @@
 
 .siteLogo {
 	float: left;
-	width: 75%;
+	width: 70%;
 	height: 100%;
 }
 
 .links {
-	width: 25%;
+	width: 30%;
 	float: left;
 	height: 100%;
 }
@@ -49,13 +49,13 @@
 
 }
 
-.continueGrayButton {
+.RedButton {
 	background-color:rgb(200,50,0);
 	color:white;
 	font-size: 20px;
 	border: none;
 }
-.continueGrayButton:hover {
+.RedButton:hover {
 	background-color: rgba(255, 50, 0, .9);
 	border-color: orange;
 	box-shadow: 0 0 10px yellow;

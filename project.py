@@ -28,9 +28,8 @@ def index():
         logged = True;
         username = session['username']
 
-    return render_template('index.html', products = products, logged = logged, username= username, showLinks = True)
+    return render_template('index.html', products = products, logged = logged, username= username)
 
-''' Allows user to login, nothing else for now '''
 @app.route('/login',methods = ['POST','GET'])
 def login():
     if request.method == 'GET':
@@ -170,8 +169,8 @@ def productInfo(name,storage):
     return render_template('productInfo.html',products = products, logged = logged, username= username)
 
 @app.route('/Cart/<name>/<storage>')
+@login_required
 def Cart(name,storage):
-
     username=session['username']
     productname=name
     productstorage=storage
@@ -189,6 +188,7 @@ def Cart(name,storage):
     return render_template('cart.html', products = cart, logged = True, username= username)
 
 @app.route('/CartDisplay')
+@login_required
 def CartDisplay():
     username=session['username']
     return render_template('cartdisplay.html', products = cart, logged = True, username= username)

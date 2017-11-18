@@ -1,6 +1,6 @@
 <div class="headdiv">
   <div class="siteLogo">
-    project24
+    <a href="{{ url_for('index') }}">project24</a>
   </div>
   <div class="links">
   <ul id="headnav">
@@ -13,6 +13,7 @@
         <li id="ul1"><a href="{{ url_for('register') }}">sign up</li>
         <li id="ul1"><a href="{{ url_for('login') }}">login</a></li>
       {% endif %}
+        <li id="ul1"><a href="{{url_for('CartDisplay') }}">cart</a></li>
   </ul>
   </div>
 
@@ -24,15 +25,13 @@
       <input oninput="showHint(this.value)" class="inputField" type="text" name="searchbox" size="70" required placeholder="Search by phone or company name">
     </div>
     <div id="sb">
-      <input type="submit" class="continueGrayButton">
+      <input type="submit" class="continueGrayButton RedButton">
     </div>
   </form>
   <div class="txtHint" id="hintBox">
     <ul id="txtHint"></ul>
   </div>
 </div>
-
-<div><a href="{{url_for('CartDisplay') }}">Cart</a></div>
 
 <div class="electronics">
   <div class="drop">
