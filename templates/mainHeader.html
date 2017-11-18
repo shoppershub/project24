@@ -5,7 +5,7 @@
   <div class="links">
   <ul id="headnav">
     <li id="ul1"><a href="{{ url_for('customerCare') }}">Customer Care</a></li>
-    
+
       {% if logged %}
         <li id="ul1">Hello, {{username}}</li>
         <li id="ul1"><a href="{{ url_for('logout') }}">logout</a></li>
@@ -15,7 +15,7 @@
       {% endif %}
   </ul>
   </div>
-  
+
 </div>
 
 <div class="searchBox">
@@ -31,6 +31,8 @@
     <ul id="txtHint"></ul>
   </div>
 </div>
+
+<div><a href="{{url_for('CartDisplay') }}">Cart</a></div>
 
 <div class="electronics">
   <div class="drop">

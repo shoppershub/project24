@@ -2,10 +2,12 @@ import sqlite3 as sql
 from functools import wraps
 from flask import Flask,render_template,request,redirect,url_for,session,jsonify
 from SQL_execute import GetData, dict_factory
-
 app = Flask(__name__)
+
 app.secret_key = 'project24'
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 productscart=list()
+cart=list()
 
 def login_required(f):
     @wraps(f)
@@ -176,18 +178,23 @@ def Cart(name,storage):
     con = sql.connect('products.db')
     con.row_factory = dict_factory
     cur = con.cursor()
-    cur.execute('INSERT INTO cart(username,productname,storage) VALUES(?,?,?)', (username,productname,productstorage))
+    #cur.execute('INSERT INTO cart(username,productname,storage) VALUES(?,?,?)', (username,productname,productstorage))
+    cur.execute('SELECT * FROM products WHERE name = ? AND storage = ? ',(productname,productstorage))
+    temp=cur.fetchall()
+    cart.append(temp[0])
     con.commit()
     con.close()
-    addedproduct=GetData('SELECT * FROM products WHERE name=productname AND storage=productstorage')
-    productscart.append(addedproduct)
-    return render_template('cart.html', products = productscart, logged = True, username= username)
+    #addedproduct=GetData('SELECT * FROM products WHERE name=? AND storage=?',(productname, productstorage,))
+    #productscart.append(addedproduct)
+    return render_template('cart.html', products = cart, logged = True, username= username)
 
-
+@app.route('/CartDisplay')
+def CartDisplay():
+    username=session['username']
+    return render_template('cartdisplay.html', products = cart, logged = True, username= username)
 
 @app.route('/customerCare')
 def customerCare():
-
     return render_template('customerCare.html')
 
 ''' Only for admins '''
