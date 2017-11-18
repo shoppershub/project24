@@ -25,7 +25,7 @@ def index():
         logged = True;
         username = session['username']
 
-    return render_template('index.html', products = products, logged = logged, username= username)
+    return render_template('index.html', products = products, logged = logged, username= username, showLinks = True)
 
 ''' Allows user to login, nothing else for now '''
 @app.route('/login',methods = ['POST','GET'])
@@ -158,7 +158,7 @@ def productInfo(name,storage):
 
     products = cur.fetchall()
     con.close()
-    return render_template('productInfo.html',products = products)
+    return render_template('productInfo.html',products = products, showLinks=False)
 
 @app.route('/customerCare')
 def customerCare():
