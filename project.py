@@ -1,4 +1,5 @@
 import sqlite3 as sql
+from functools import wraps
 from flask import Flask,render_template,request,redirect,url_for,session,jsonify
 from SQL_execute import GetData, dict_factory
 
@@ -6,10 +7,16 @@ app = Flask(__name__)
 app.secret_key = 'project24'
 productscart=list()
 
+def login_required(f):
+    @wraps(f)
+    def fn(*args,**kwargs):
+        if 'username' not in session:
+            return redirect(url_for('login'))
+        return f(*args,**kwargs)
+    return fn
+
 @app.route('/')
 def index():
-
-    # TODO - Add Images in database
     products = GetData('SELECT * FROM products ORDER BY RANDOM() LIMIT 5');
 
     logged = False
@@ -19,7 +26,7 @@ def index():
         logged = True;
         username = session['username']
 
-    return render_template('index.html', products = products, logged = logged, username= username)
+    return render_template('index.html', products = products, logged = logged, username= username, showLinks = True)
 
 ''' Allows user to login, nothing else for now '''
 @app.route('/login',methods = ['POST','GET'])
@@ -95,6 +102,7 @@ def logout():
     return redirect(url_for('index'))
 
 @app.route('/listUsers')
+@login_required
 def listUsers():
     con = sql.connect('products.db')
     con.row_factory = sql.Row
@@ -151,7 +159,13 @@ def productInfo(name,storage):
 
     products = cur.fetchall()
     con.close()
-    return render_template('productInfo.html',products = products)
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
+    return render_template('productInfo.html',products = products, logged = logged, username= username)
 
 @app.route('/Cart/<name>/<storage>')
 def Cart(name,storage):
@@ -180,18 +194,36 @@ def customerCare():
 @app.route('/samsung')
 def samsung():
     samsung = GetData('SELECT * FROM products where brand="samsung"');
-    return render_template('samsung.html', products = samsung)
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
+    return render_template('samsung.html', products = samsung, logged = logged, username= username)
 
 @app.route('/redmi')
 def redmi():
     redmi = GetData('SELECT * FROM products where brand="Redmi"');
-    return render_template('redmi.html', products = redmi)
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
+    return render_template('redmi.html', products = redmi, logged = logged, username= username)
 
 
 @app.route('/apple')
 def apple():
     apple = GetData('SELECT * FROM products where brand="Apple"');
-    return render_template('apple.html', products = apple)
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
+    return render_template('apple.html', products = apple, logged = logged, username= username)
 
 @app.route('/applebelow32gb')
 def applebelow32gb():
@@ -202,29 +234,48 @@ def applebelow32gb():
         st=s[0:-2]
         if int(st)<=32:
             below64gb.append(product)
-    return render_template('apple.html', products = below64gb)
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
+    return render_template('apple.html', products = below64gb, logged = logged, username= username)
 
 @app.route('/apple32gb64gb')
 def apple32gb64gb():
     apple = GetData('SELECT * FROM products where brand="Apple"');
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
     below64gb=list()
     for product in apple:
         s=product["storage"]
         st=s[0:-2]
         if int(st)>32 and int(st)<=64:
             below64gb.append(product)
-    return render_template('apple.html', products = below64gb)
+    return render_template('apple.html', products = below64gb, logged = logged, username= username)
 
 @app.route('/apple64gb256gb')
 def apple64gb256gb():
     apple = GetData('SELECT * FROM products where brand="Apple"');
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
     below64gb=list()
     for product in apple:
         s=product["storage"]
         st=s[0:-2]
         if int(st)>64 and int(st)<=256:
             below64gb.append(product)
-    return render_template('apple.html', products = below64gb)
+
+    return render_template('apple.html', products = below64gb, logged = logged, username= username)
 
 @app.route('/samsungbelow32gb')
 def samsungbelow32gb():
@@ -235,7 +286,13 @@ def samsungbelow32gb():
         st=s[0:-2]
         if int(st)<=32:
             below64gb.append(product)
-    return render_template('samsung.html', products = below64gb)
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
+    return render_template('samsung.html', products = below64gb, logged = logged, username= username)
 
 @app.route('/samsung32gb64gb')
 def samsung32gb64gb():
@@ -246,7 +303,13 @@ def samsung32gb64gb():
         st=s[0:-2]
         if int(st)>32 and int(st)<=64:
             below64gb.append(product)
-    return render_template('samsung.html', products = below64gb)
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
+    return render_template('samsung.html', products = below64gb, logged = logged, username= username)
 
 @app.route('/samsung64gb256gb')
 def samsung64gb256gb():
@@ -257,7 +320,13 @@ def samsung64gb256gb():
         st=s[0:-2]
         if int(st)>64 and int(st)<=256:
             below64gb.append(product)
-    return render_template('samsung.html', products = below64gb)
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
+    return render_template('samsung.html', products = below64gb, logged = logged, username= username)
 @app.route('/redmibelow32gb')
 def redmibelow32gb():
     apple = GetData('SELECT * FROM products where brand="Redmi"');
@@ -267,7 +336,13 @@ def redmibelow32gb():
         st=s[0:-2]
         if int(st)<=32:
             below64gb.append(product)
-    return render_template('redmi.html', products = below64gb)
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
+    return render_template('redmi.html', products = below64gb, logged = logged, username= username)
 
 @app.route('/redmi32gb64gb')
 def redmi32gb64gb():
@@ -278,7 +353,13 @@ def redmi32gb64gb():
         st=s[0:-2]
         if int(st)>32 and int(st)<=64:
             below64gb.append(product)
-    return render_template('redmi.html', products = below64gb)
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
+    return render_template('redmi.html', products = below64gb, logged = logged, username= username)
 
 @app.route('/redmi64gb256gb')
 def redmi64gb256gb():
@@ -289,7 +370,13 @@ def redmi64gb256gb():
         st=s[0:-2]
         if int(st)>64 and int(st)<=256:
             below64gb.append(product)
-    return render_template('redmi.html', products = below64gb)
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
+    return render_template('redmi.html', products = below64gb, logged = logged, username= username)
 
 @app.route('/samsbp')
 def samsbp():
@@ -308,11 +395,23 @@ def samsbp():
         for y in samsort:
             if price==y["price"]:
                 samsorted.append(y)
-    return render_template('samsung.html',products=samsorted)
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
+    return render_template('samsung.html',products=samsorted, logged = logged, username= username)
 
 @app.route('/samsbs')
 def samsbs():
     samsort=GetData('SELECT * FROM products WHERE brand="samsung"')
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
     samsorted=list()
     for product in samsort:
         x=product["storage"]
@@ -328,11 +427,17 @@ def samsbs():
             samsorted.append(product)
 
 
-    return render_template('samsung.html',products=samsorted)
+    return render_template('samsung.html',products=samsorted, logged = logged, username= username)
 
 @app.route('/redmisbp')
 def redmisbp():
     samsort=GetData('SELECT * FROM products WHERE brand="Redmi"')
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
     samprice=list()
     samsorted=list()
     for product in samsort:
@@ -346,11 +451,17 @@ def redmisbp():
         for y in samsort:
             if price==y["price"]:
                 samsorted.append(y)
-    return render_template('redmi.html',products=samsorted)
+    return render_template('redmi.html',products=samsorted, logged = logged, username= username)
 
 @app.route('/redmisbs')
 def redmisbs():
     samsort=GetData('SELECT * FROM products WHERE brand="Redmi"')
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
     samsorted=list()
     for product in samsort:
         x=product["storage"]
@@ -366,11 +477,17 @@ def redmisbs():
             samsorted.append(product)
 
 
-    return render_template('redmi.html',products=samsorted)
+    return render_template('redmi.html',products=samsorted, logged = logged, username= username)
 
 @app.route('/applesbp')
 def applesbp():
     samsort=GetData('SELECT * FROM products WHERE brand="Apple"')
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
     samprice=list()
     samsorted=list()
     for product in samsort:
@@ -384,11 +501,17 @@ def applesbp():
         for y in samsort:
             if price==y["price"]:
                 samsorted.append(y)
-    return render_template('apple.html',products=samsorted)
+    return render_template('apple.html',products=samsorted, logged = logged, username= username)
 
 @app.route('/applesbs')
 def applesbs():
     samsort=GetData('SELECT * FROM products WHERE brand="Apple"')
+    logged = False
+    username = ""
+
+    if 'username' in session:
+        logged = True;
+        username = session['username']
     samsorted=list()
     for product in samsort:
         x=product["storage"]
@@ -404,7 +527,7 @@ def applesbs():
             samsorted.append(product)
 
 
-    return render_template('apple.html',products=samsorted)
+    return render_template('apple.html',products=samsorted, logged = logged, username= username)
 
 
 if __name__ == "__main__":

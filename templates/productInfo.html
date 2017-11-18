@@ -5,15 +5,18 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mainc.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/product.css') }}">
 {%endblock%}
-{%block header%}<div style="width:200px;height:40px;display:inline-block;"><h1></h1></div>{%include 'mainHeader.html'%}
+{%block header%}
 
+<div class="mainHeader" style="float:left;height:100%;">
+  {% include "mainHeader.html" %}
+</div>
 {%endblock%}
 {% block middle %}
 <ul id="productList">
 
   {% for product in products %}
     <li>
-      <div class="product" onclick="GetValues(this);">
+      <div class="product">
         <div class="productImage">
           <!--- TODO - Add image from DB --->
           <img src="{{ url_for('static',filename=product['image']) }}" alt="{{product['name']}}">

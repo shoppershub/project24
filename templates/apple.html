@@ -1,18 +1,28 @@
-{%extends "base.html"%}
+{% extends "base.html" %}
 
-{% block title%}Apple{%endblock%}
-{%block css%}
-<link rel="stylesheet" href="{{ url_for('static',filename='css/mainc.css')}}">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/product.css') }}">
-{%endblock%}
-{%block header%}<div style="width:200px;height:40px;display:inline-block;"><h1>Apple</h1></div>{%include 'mainHeader.html'%}
+{% block title %}Apple{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/mainc.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/product.css') }}">
+{% endblock %}
+
+{% block header %}
+	<div class="mainHeader" style="float:left;height:100%;">
+		{% include "mainHeader.html" %}
+	</div>
+	
+{% endblock %}
+
+{% block middle %}
 <div id="mainhdiv">
 		<div class="drop" id="dropi"><button class="b1">Select Filter Here</button>
-		<div class="dc"><button type="button" class="mobile" id="dci">filter by RAM</button>
+		<div class="dc"><button type="button" class="mobile" id="dci">Filter by Storage</button>
 		<div class="mobiledc" style="height:190px;width:200px;">
 			<a href="{{ url_for('applebelow32gb') }}">below 32GB</a>
 			<a href="{{ url_for('apple32gb64gb') }}">between 32GB to 64 GB</a>
 			<a href="{{ url_for('apple64gb256gb') }}">between 64GB to 256GB</a>
+
 </div>
 </div>
 </div>
@@ -21,15 +31,15 @@
 			<a href="{{ url_for('applesbp') }}">Sort By Price</a>
 			<a href="{{ url_for('applesbs') }}">Sort By Storage</a>
 
+
 </div>
 </div>
 </div>
-
-
-
-{%endblock%}
-{% block middle %}
 	<div class="productList">
-		{% include 'productsLists.html' %}
+		{% include "productsLists.html" %}
 	</div>
+{% endblock %}
+
+{% block footer %}
+
 {% endblock %}

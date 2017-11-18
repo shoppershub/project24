@@ -1,44 +1,57 @@
-<div id="headdiv">
-<ul>
-  <li id="ul1"><a href="{{ url_for('customerCare') }}">Customer Care</a></li>
-  {% if logged %}
-    <li id="ul1">Hello, {{username}}</li>
-    <li id="ul1"><a href="{{ url_for('logout') }}">logout</a></li>
-  {% else %}
-    <li id="ul1"><a href="{{ url_for('register') }}">sign up</li>
-    <li id="ul1"><a href="{{ url_for('login') }}">login</a></li>
-  {% endif %}
-</ul>
+<div class="headdiv">
+  <div class="siteLogo">
+    project24
+  </div>
+  <div class="links">
+  <ul id="headnav">
+    <li id="ul1"><a href="{{ url_for('customerCare') }}">Customer Care</a></li>
+    
+      {% if logged %}
+        <li id="ul1">Hello, {{username}}</li>
+        <li id="ul1"><a href="{{ url_for('logout') }}">logout</a></li>
+      {% else %}
+        <li id="ul1"><a href="{{ url_for('register') }}">sign up</li>
+        <li id="ul1"><a href="{{ url_for('login') }}">login</a></li>
+      {% endif %}
+  </ul>
+  </div>
+  
 </div>
 
-<div>
-<form method="post" action="{{ url_for('search')}}">
-<input oninput="showHint(this.value)" type="text" name="searchbox" id="search" size="70" required placeholder="Search by phone or company name"><input type="submit" id="sb"></form>
-
+<div class="searchBox">
+  <form class="search" method="post" action="{{ url_for('search')}}">
+    <div id="search">
+      <input oninput="showHint(this.value)" class="inputField" type="text" name="searchbox" size="70" required placeholder="Search by phone or company name">
+    </div>
+    <div id="sb">
+      <input type="submit" class="continueGrayButton">
+    </div>
+  </form>
   <div class="txtHint" id="hintBox">
     <ul id="txtHint"></ul>
   </div>
-
 </div>
-<div class="drop">
-<button class="b1">Electronics</button>
 
-<div class="dc">
-<button type="button" class="mobile">MOBILES</button>
-  <div class="mobiledc">
-  <a href="{{url_for('samsung') }}">Samsung</a>
-  <a href="{{url_for('redmi') }}">Redmi</a>
-  <a href="{{url_for('apple') }}">Apple</a>
+<div class="electronics">
+  <div class="drop">
+    <button class="b1">Electronics</button>
+    <div class="dc">
+  <button type="button" class="mobile">MOBILES</button>
+    <div class="mobiledc">
+    <a href="{{url_for('samsung') }}">Samsung</a>
+    <a href="{{url_for('redmi') }}">Redmi</a>
+    <a href="{{url_for('apple') }}">Apple</a>
+
+    </div>
+  </div>
+  </div>
+  <div class="drop1">
+    <button class="b2">Electronics</button>
+    <button class="b2">Electronics</button>
+    <button class="b2">Electronics</button>
+    <button class="b2">Electronics</button>
+    <button class="b2">Electronics</button>
+    <button class="b2">Electronics</button>
 
   </div>
-</div>
-</div>
-<div class="drop1">
-  <button class="b2">Electronics</button>
-  <button class="b2">Electronics</button>
-  <button class="b2">Electronics</button>
-  <button class="b2">Electronics</button>
-  <button class="b2">Electronics</button>
-  <button class="b2">Electronics</button>
-
 </div>
