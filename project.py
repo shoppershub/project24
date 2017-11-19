@@ -8,8 +8,7 @@ app = Flask(__name__)
 
 app.secret_key = 'project24'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-productscart=list()
-cart=list()
+
 
 def login_required(f):
     @wraps(f)
@@ -195,20 +194,29 @@ def Cart(name,storage):
     con = sql.connect('products.db')
     con.row_factory = dict_factory
     cur = con.cursor()
-    #cur.execute('INSERT INTO cart(username,productname,storage) VALUES(?,?,?)', (username,productname,productstorage))
-    cur.execute('SELECT * FROM products WHERE name = ? AND storage = ? ',(productname,productstorage))
-    temp=cur.fetchall()
-    cart.append(temp[0])
+    cur.execute('INSERT INTO cart(username,productname,storage) VALUES(?,?,?)', (username,productname,productstorage))
+      
+   
     con.commit()
     con.close()
-    #addedproduct=GetData('SELECT * FROM products WHERE name=? AND storage=?',(productname, productstorage,))
-    #productscart.append(addedproduct)
-    return render_template('cart.html', products = cart, logged = True, username= username)
+    
+    return redirect(url_for('CartDisplay'))
 
 @app.route('/CartDisplay')
 @login_required
 def CartDisplay():
     username=session['username']
+    con = sql.connect('products.db')
+    con.row_factory = sql.Row
+    cur = con.cursor()
+    acart = cur.execute('SELECT * FROM cart WHERE username=?',(username,))
+    acart = acart.fetchall()
+    aproduct=GetData('SELECT * FROM products');
+    cart=list()
+    for i in acart:
+        for j in aproduct:
+            if (i["productname"]==j["name"] and i["storage"]==j["storage"]):
+                cart.append(j)
     return render_template('cartdisplay.html', products = cart, logged = True, username= username)
 
 @app.route('/customerCare')
