@@ -201,6 +201,22 @@ def Cart(name,storage):
     con.close()
     
     return redirect(url_for('CartDisplay'))
+@app.route('/rmCart/<name>/<storage>')
+@login_required
+def rmCart(name,storage):
+    username=session['username']
+    productname=name
+    productstorage=storage
+    con = sql.connect('products.db')
+    con.row_factory = dict_factory
+    cur = con.cursor()
+    cur.execute('DELETE FROM cart WHERE username=? AND productname=? AND storage=?', (username,productname,productstorage))
+      
+   
+    con.commit()
+    con.close()
+    
+    return redirect(url_for('CartDisplay'))
 
 @app.route('/CartDisplay')
 @login_required
