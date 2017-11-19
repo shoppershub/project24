@@ -47,14 +47,3 @@ function getValuesForCart(){
   //alert(href);
   window.location.href = href;
 }
-function removefromCart(){
- 
-  var productClass=document.getElementsByClassName('product')[0];
-  var getname = productClass.getElementsByClassName('productName')[0].innerHTML;
-  var getsize = productClass.getElementsByClassName('productStorage')[0].innerHTML;
-  var size = getsize.trim();
-  var name = getname.trim();
-  var href = "/rmCart/" + name + "/" + size;
-  alert(href);
-  window.location.href = href;
-}
