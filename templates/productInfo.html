@@ -40,8 +40,9 @@
           </div>
         </div>
       </div>
-        <div><button class="continueGrayButton" onclick="getValuesForCart();">Add to Cart</button>
+        <div style="width:50%;display:inline-block;float:left;"><button class="continueGrayButton" onclick="getValuesForCart();">Add to Cart</button>
 		</div>
+		<div style="width:50%;display:inline-block;float:left;"><button class="continueYellowButton" onclick="window.location='/buyProduct/{{product.name}}/{{product.storage}}';">Buy this product</button></div>
       </div>
     </li>
   {% endfor %}
