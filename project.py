@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 app.secret_key = 'project24'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-
+admins = ['maulik','harsh','suprit']
 
 def login_required(f):
     @wraps(f)
@@ -17,6 +17,12 @@ def login_required(f):
             return redirect(url_for('login'))
         return f(*args,**kwargs)
     return fn
+
+def check_admin(username):
+    for admin in admins:
+        if username == admin:
+            return True
+    return False
 
 @app.route('/')
 def index():
@@ -262,6 +268,11 @@ def buyProduct(name,storage):
 @login_required
 def reportNoOfProductsSold():
     username=session["username"]
+
+    is_admin = check_admin(username)
+    if is_admin == False:
+        return render_template('reportNoOfProductsSold.html',not_admin=True)
+
     con=sql.connect('products.db')
     con.row_factory=dict_factory
     cur=con.cursor()
@@ -273,6 +284,11 @@ def reportNoOfProductsSold():
 @login_required
 def userReport():
     username=session["username"]
+
+    is_admin = check_admin(username)
+    if is_admin == False:
+        return render_template('reportNoOfProductsSold.html',not_admin=True)
+
     con=sql.connect('products.db')
     con.row_factory=dict_factory
     cur=con.cursor()

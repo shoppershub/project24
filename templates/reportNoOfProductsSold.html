@@ -12,7 +12,9 @@
   {% include 'mainHeader.html' %}
 {% endblock %}
 {% block middle %}
-
+{% if not_admin %}
+  Admin access needed!
+{% else %}
   <table>
     <tr>
       <th>Name</th>
@@ -27,7 +29,7 @@
       </tr>
     {% endfor %}
   </table>
-
+{% endif %}
 {% endblock %}
 
 {% block footer %}
