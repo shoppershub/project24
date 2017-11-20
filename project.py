@@ -195,12 +195,11 @@ def Cart(name,storage):
     con.row_factory = dict_factory
     cur = con.cursor()
     cur.execute('INSERT INTO cart(username,productname,storage) VALUES(?,?,?)', (username,productname,productstorage))
-      
-   
     con.commit()
     con.close()
-    
     return redirect(url_for('CartDisplay'))
+
+
 @app.route('/rmCart/<name>/<storage>')
 @login_required
 def rmCart(name,storage):
@@ -211,11 +210,8 @@ def rmCart(name,storage):
     con.row_factory = dict_factory
     cur = con.cursor()
     cur.execute('DELETE FROM cart WHERE username=? AND productname=? AND storage=?', (username,productname,productstorage))
-      
-   
     con.commit()
     con.close()
-    
     return redirect(url_for('CartDisplay'))
 
 @app.route('/CartDisplay')
@@ -234,6 +230,56 @@ def CartDisplay():
             if (i["productname"]==j["name"] and i["storage"]==j["storage"]):
                 cart.append(j)
     return render_template('cartdisplay.html', products = cart, logged = True, username= username)
+
+@app.route('/buyProduct/<name>/<storage>')
+@login_required
+def buyProduct(name,storage):
+    username=session['username']
+    productname=name
+    productstorage=storage
+    con=sql.connect('products.db')
+    con.row_factory=dict_factory
+    cur=con.cursor()
+    cur.execute('SELECT * FROM productsold WHERE name=? AND storage=?',(name,storage,))
+    dbdict=cur.fetchall()
+    dbaddname=productname
+    dbaddstorage=productstorage
+    dbaddnumber=dbdict[0]["numberofproductssold"]+1
+    cur.execute('INSERT INTO userreport(username,productname,productstorage) VALUES(?,?,?)',(username,productname,productstorage))
+    cur.execute('DELETE FROM productsold WHERE name=? AND storage=?', (name,storage,))
+    cur.execute('INSERT INTO productsold(name,storage,numberofproductssold) VALUES(?,?,?)', (dbaddname,dbaddstorage,dbaddnumber))
+    con.commit()
+    con.close()
+    con = sql.connect('products.db')
+    con.row_factory = dict_factory
+    cur = con.cursor()
+    cur.execute('DELETE FROM cart WHERE username=? AND productname=? AND storage=?', (username,productname,productstorage))
+    con.commit()
+    con.close()
+    return redirect(url_for('CartDisplay'))
+
+@app.route('/reportNoOfProductsSold')
+@login_required
+def reportNoOfProductsSold():
+    username=session["username"]
+    con=sql.connect('products.db')
+    con.row_factory=dict_factory
+    cur=con.cursor()
+    cur.execute('SELECT * FROM productsold')
+    lis=cur.fetchall()
+    return render_template('reportNoOfProductsSold.html', rows=lis, logged=True, username=username)
+
+@app.route('/userReport')
+@login_required
+def userReport():
+    username=session["username"]
+    con=sql.connect('products.db')
+    con.row_factory=dict_factory
+    cur=con.cursor()
+    cur.execute('SELECT * FROM userreport')
+    lis=cur.fetchall()
+    return render_template('userReport.html', rows=lis, logged=True, username=username)
+
 
 @app.route('/customerCare')
 def customerCare():

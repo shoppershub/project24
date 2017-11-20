@@ -13,11 +13,20 @@
 {% endblock %}
 {% block middle %}
 
-  <h1>Purchase Successful!! Products bought: </h1>
-  <div class="productList">
-    {% include 'productsLists.html' %}
-  </div>
-
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Storage</th>
+      <th>Number of products sold</th>
+    </tr>
+    {% for row in rows %}
+      <tr>
+        <td>{{row["name"]}}</td>
+        <td>{{row["storage"]}}</td>
+        <td>{{row["numberofproductssold"]}}</td>
+      </tr>
+    {% endfor %}
+  </table>
 
 {% endblock %}
 

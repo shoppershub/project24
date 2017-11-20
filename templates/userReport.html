@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Home page{% endblock %}
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/mainc.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/product.css') }}">
+{% endblock %}
+{% block jscript %}
+  <script type="text/javascript" src="{{ url_for('static',filename='jscript/mainj.js') }}"></script>
+{% endblock %}
+{% block header %}
+  {% include 'mainHeader.html' %}
+{% endblock %}
+{% block middle %}
+
+  <table>
+    <tr>
+      <th>Userame</th>
+      <th>Product Name</th>
+      <th>Product Storage</th>
+    </tr>
+    {% for row in rows %}
+      <tr>
+        <td>{{row["username"]}}</td>
+        <td>{{row["productname"]}}</td>
+        <td>{{row["productstorage"]}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
