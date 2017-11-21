@@ -85,7 +85,6 @@ def register():
             #      - Done by Jscript
             # TODO - validate if passwords are same
 
-
             with sql.connect("products.db") as con:
                 con.row_factory = dict_factory
                 cur = con.cursor()
@@ -200,6 +199,14 @@ def Cart(name,storage):
     con = sql.connect('products.db')
     con.row_factory = dict_factory
     cur = con.cursor()
+
+    #If item is already present in cart
+    cur2 = con.cursor()
+    ret = cur2.execute('SELECT * FROM cart WHERE (username=? AND productname=? AND storage=?)',(username,productname,productstorage))
+    ret = ret.fetchall()
+    if ret:
+        return redirect(url_for('CartDisplay'))
+
     cur.execute('INSERT INTO cart(username,productname,storage) VALUES(?,?,?)', (username,productname,productstorage))
     con.commit()
     con.close()
@@ -262,7 +269,7 @@ def buyProduct(name,storage):
     cur.execute('DELETE FROM cart WHERE username=? AND productname=? AND storage=?', (username,productname,productstorage))
     con.commit()
     con.close()
-    return redirect(url_for('CartDisplay'))
+    return
 
 @app.route('/reportNoOfProductsSold')
 @login_required

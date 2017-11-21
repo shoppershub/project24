@@ -7,6 +7,7 @@
 {% endblock %}
 {% block jscript %}
   <script type="text/javascript" src="{{ url_for('static',filename='jscript/mainj.js') }}"></script>
+  <script type="text/javascript" src="{{url_for('static',filename='jscript/buy.js')}}"></script>
 {% endblock %}
 {% block header %}
   {% include 'mainHeader.html' %}
@@ -19,7 +20,7 @@
 
   {% for product in products %}
     <li>
-      <div class="product">
+      <div class="product" id='{{loop.index}}p'>
         <div class="productImage">
           <!--- TODO - Add image from DB --->
           <img src="{{ url_for('static',filename=product['image']) }}" alt="{{product['name']}}">
@@ -42,15 +43,19 @@
             &#2352; {{product["price"]}}
           </div>
         </div>
-        <div style="float:left;width:100%;margin-top:5%;">
-        <div style="margin-left:10%;width:20%;display:inline-block;float:left;"><button class="continueGrayButton" onclick="window.location='/rmCart/{{product.name}}/{{product.storage}}';">remove from cart</button></div>
-        <div style="margin-right:10%;width:20%;display:inline-block;float:right;"><button class="continueYellowButton" onclick="window.location='/buyProduct/{{product.name}}/{{product.storage}}';">Buy this product</button></div>
+        <div style="float:left;width:100%;margin-top:2%;" id='{{loop.index}}'>
+          <div style="margin-left:10%;width:20%;display:inline-block;float:left;">
+            <button class="continueGrayButton" onclick="window.location='/rmCart/{{product.name}}/{{product.storage}}';">
+              remove from cart</button></div>
+          <div style="margin-right:10%;width:20%;display:inline-block;float:right;">
+            <button class="continueYellowButton" onclick="buy('{{product.name}}','{{product.storage}}','{{loop.index}}')">
+              Buy this product</button></div>
         </div>
       </div>
-
       </div>
 
     </li>
+
   {% endfor %}
 
 </ul>

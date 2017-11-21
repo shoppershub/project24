@@ -5,8 +5,12 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/mainc.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/product.css') }}">
 {%endblock%}
-{%block header%}
 
+{% block jscript %}
+  <script type="text/javascript" src="{{url_for('static',filename='jscript/buy.js')}}"></script>
+{% endblock %}
+
+{%block header%}
 <div class="mainHeader" style="float:left;height:100%;">
   {% include "mainHeader.html" %}
 </div>
@@ -16,13 +20,13 @@
 
   {% for product in products %}
     <li>
-      <div class="product">
-        <div class="productImage">
+      <div class="product" id='{{loop.index}}p' style="height:850px;">
+        <div class="productImage" style="height:50%;width:100%;">
           <!--- TODO - Add image from DB --->
-          <img src="{{ url_for('static',filename=product['image']) }}" alt="{{product['name']}}">
+          <img src="{{ url_for('static',filename=product['image']) }}" alt="{{product['name']}}" style="width:45%;margin-left:20%;">
         </div>
-        <div class="productInfo">
-          <div class="info">
+        <div class="productInfo" style="width:100%;margin-top:0px;">
+          <div class="info" style="width:100%;">
           <div class="productName productDescription" id="productName">
             {{product["name"]}}
           </div>
@@ -39,10 +43,12 @@
             &#2352; {{product["price"]}}
           </div>
         </div>
-        <div style="float:left;width:100%;margin-top:5%;">
-        <div style="margin-left:10%;width:20%;display:inline-block;float:left;"><button class="continueGrayButton" onclick="getValuesForCart();">Add to Cart</button>
+        <div style="float:left;width:100%;margin-top:2%;" id='{{loop.index}}'>
+        <div style="margin-left:10%;width:20%;display:inline-block;float:left;">
+          <button class="continueGrayButton" onclick="getValuesForCart();">Add to Cart</button>
     		</div>
-    		<div style="margin-right:10%;width:20%;display:inline-block;float:right;"><button class="continueYellowButton" onclick="window.location='/buyProduct/{{product.name}}/{{product.storage}}';">Buy this product</button></div>
+    		<div style="margin-right:10%;width:20%;display:inline-block;float:right;">
+          <button class="continueYellowButton" onclick="buy('{{product.name}}','{{product.storage}}','{{loop.index}}')">Buy this product</button></div>
         </div>
       </div>
       </div>

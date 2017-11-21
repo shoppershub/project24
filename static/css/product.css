@@ -44,7 +44,7 @@
   border-style: solid;
   border-radius: 5px;
   border-width: thin;
-  height:290px;
+  height:300px;
 }
 
 .product:hover {
@@ -56,24 +56,29 @@
 
 .productName {
   color: blue;
+  font-size: 22px;
+  margin-bottom: 1%;
 }
 
 .productDescription {
   margin-left: 15%;
+  margin-bottom: 1%;
 }
 
 .productCompany {
-  font-size: 15px;
+  font-size: 20px;
   color: grey;
+  margin-bottom: 1%;;
 }
 
 .productCompany .by {
-  font-size: 12px;
-  margin: 0px 0px 0px 0px;
+  font-size: 15px;
+  margin-bottom: 1%;
 }
 
 .productVariant {
-  font-size: 15px;
+  font-size: 20px;
+  margin-bottom: 1%;
 }
 
 .productColor, .productStorage {
@@ -86,5 +91,6 @@
 
 .productPrice {
   color: crimson;
+  font-size: 17px;
   font-weight: bold;
 }
